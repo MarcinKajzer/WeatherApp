@@ -8,16 +8,16 @@ namespace WeatherApp.Models.ForecastModel
     public class WeatherDetails
     {
         [JsonProperty("temp")]
-        public double Temp { get; set; }
+        public double Temperature { get; set; }
 
         [JsonProperty("feels_like")]
-        public double FeelsLike { get; set; }
+        public double FeelsLikeTemperature { get; set; }
 
         [JsonProperty("temp_min")]
-        public double TempMin { get; set; }
+        public double TemperatureMin { get; set; }
 
         [JsonProperty("temp_max")]
-        public double TempMax { get; set; }
+        public double TemperatureMax { get; set; }
 
         [JsonProperty("pressure")]
         public long Pressure { get; set; }

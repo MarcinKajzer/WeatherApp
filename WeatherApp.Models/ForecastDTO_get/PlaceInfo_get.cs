@@ -5,10 +5,10 @@ using System.Text;
 
 namespace WeatherApp.Models.ForecastModel
 {
-    public class City
+    public class PlaceInfo_get
     {
         [JsonProperty("name")]
-        public string Name { get; set; }
+        public string City { get; set; }
 
         [JsonProperty("country")]
         public string Country { get; set; }

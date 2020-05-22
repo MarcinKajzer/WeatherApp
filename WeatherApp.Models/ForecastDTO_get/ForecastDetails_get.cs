@@ -5,25 +5,22 @@ using System.Text;
 
 namespace WeatherApp.Models.ForecastModel
 {
-    public class ForecastDetails
+    public class ForecastDetails_get
     {
         [JsonProperty("dt")]
-        public long Dt { get; set; }
+        public long Date { get; set; }
 
         [JsonProperty("main")]
         public WeatherDetails MainParameters { get; set; }
 
         [JsonProperty("weather")]
-        public Description[] Description { get; set; }
+        public List<Description> Description { get; set; }
 
         [JsonProperty("clouds")]
         public Clouds Clouds { get; set; }
 
         [JsonProperty("wind")]
         public Wind Wind { get; set; }
-
-        [JsonProperty("dt_txt")]
-        public DateTimeOffset DtTxt { get; set; }
 
         [JsonProperty("rain", NullValueHandling = NullValueHandling.Ignore)]
         public Rain Rain { get; set; }

@@ -12,6 +12,6 @@ namespace WeatherApp.Models.ForecastModel
         public double Speed { get; set; }
 
         [JsonProperty("deg")]
-        public long Deg { get; set; }
+        public long Direction { get; set; }
     }
 }

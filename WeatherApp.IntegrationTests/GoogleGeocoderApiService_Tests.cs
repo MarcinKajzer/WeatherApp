@@ -38,7 +38,7 @@ namespace WeatherApp.IntegrationTests
         [Fact]
         public void returns_response()
         {
-            string result = execute("Leszno");
+            string result = execute("London");
 
             Assert.NotEmpty(result);
         }
@@ -46,7 +46,7 @@ namespace WeatherApp.IntegrationTests
         [Fact]
         public void returns_json_response()
         {
-            string result = execute("Leszno");
+            string result = execute("London");
 
             var exception = Record.Exception(() => deserialize_json(result));
 

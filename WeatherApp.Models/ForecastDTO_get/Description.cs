@@ -8,7 +8,7 @@ namespace WeatherApp.Models.ForecastModel
     public class Description
     {
         [JsonProperty("main")]
-        public string Main { get; set; }
+        public string Summary { get; set; }
 
         [JsonProperty("description")]
         public string Text { get; set; }

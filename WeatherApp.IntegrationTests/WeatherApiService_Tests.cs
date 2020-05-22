@@ -36,7 +36,6 @@ namespace WeatherApp.IntegrationTests
 
                 return client.GetAsync(url).Result.Content.ReadAsStringAsync().Result;
             }
-            
         }
 
         [Fact]
@@ -48,7 +47,7 @@ namespace WeatherApp.IntegrationTests
         }
        
         [Fact]
-        public void returns_json_response()
+        public void returns_json_result()
         {
             string results = execute("51.5085", "-0.1257");
 
