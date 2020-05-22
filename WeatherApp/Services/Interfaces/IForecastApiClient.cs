@@ -4,8 +4,8 @@ using WeatherApp.Models.ForecastDTO_post;
 
 namespace WeatherApp.Services.Interfaces
 {
-    public interface IForecastService
+    public interface IForecastApiClient
     {
-        Task<ForecastDTO_post> GetForecastByCoordinates(Location coordinates);
+        Task<ForecastDTO_post> GetForecastByGivenCoordinates(Location coordinates);
     }
 }

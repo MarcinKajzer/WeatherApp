@@ -3,8 +3,8 @@ using WeatherApp.Models.Coordinates;
 
 namespace WeatherApp.Services.Interfaces
 {
-    interface IGoogleGeocodingService
+    interface IGeocodingApiClient
     {
-        Task<Location> GetCoordinatesByGivenPlaceName(string place);
+        Task<Coordinates> GetCoordinatesByGivenPlaceName(string place);
     }
 }

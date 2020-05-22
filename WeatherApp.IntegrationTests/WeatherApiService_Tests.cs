@@ -29,7 +29,6 @@ namespace WeatherApp.IntegrationTests
             string url = String.Format($"http://api.openweathermap.org/data/2.5/forecast?" +
                                         $"lat={latitude}&lon={longitude}&appid={apiKey}");
             
-            //maybe without adding header
             using(var client = new HttpClient())
             {
                 client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json; charset=utf-8");

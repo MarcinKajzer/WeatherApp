@@ -3,20 +3,23 @@ using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 using WeatherApp.Models.Coordinates;
+using WeatherApp.Models.ForecastDTO_post;
 using WeatherApp.Services.Interfaces;
 
 namespace WeatherApp.Services
 {
-    public class GoogleGeocodingService : IGoogleGeocodingService
+    public class GeocodingApiClient : IGeocodingApiClient
     {
         private readonly IHttpClientFactory _clientFactory;
+        private GeocodingDataParser _dataParser;
 
-        public GoogleGeocodingService(IHttpClientFactory clientFactory)
+        public GeocodingApiClient(IHttpClientFactory clientFactory)
         {
             _clientFactory = clientFactory;
+            _dataParser = new GeocodingDataParser();
         }
 
-        public async Task<Location> GetCoordinatesByGivenPlaceName(string place)
+        public async Task<Coordinates> GetCoordinatesByGivenPlaceName(string place)
         {
             string apiKey = Environment.GetEnvironmentVariable("Google.ApiKey");
             string url = String.Format($"https://maps.googleapis.com/maps/api/geocode/json?" +
@@ -29,17 +32,11 @@ namespace WeatherApp.Services
             var response = await client.SendAsync(request);
 
             if (response.IsSuccessStatusCode)
-            {
-                string result = response.Content.ReadAsStringAsync().Result;
+                return _dataParser.ParseJsonToCoordinatesObject(response.Content.ReadAsStringAsync().Result);
 
-                return JsonConvert.DeserializeObject<Location>(result);
-            }
             else
-            {
                 throw new NotImplementedException();
-            }
-
         }
-  
     }
+    
 }

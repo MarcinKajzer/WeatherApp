@@ -7,18 +7,18 @@ using WeatherApp.Services.Interfaces;
 
 namespace WeatherApp.Services
 {
-    public class ForecastService : IForecastService
+    public class ForecastApiClient : IForecastApiClient
     {
         private readonly IHttpClientFactory _clientFactory;
         private ForecastDataParser _dataParser;
 
-        public ForecastService(IHttpClientFactory clientFactory)
+        public ForecastApiClient(IHttpClientFactory clientFactory)
         {
             _clientFactory = clientFactory;
             _dataParser = new ForecastDataParser();
         }
 
-        public async Task<ForecastDTO_post> GetForecastByCoordinates(Location coordinates)
+        public async Task<ForecastDTO_post> GetForecastByGivenCoordinates(Location coordinates)
         {
             string apiKey = Environment.GetEnvironmentVariable("OpenWeatherMap.ApiKey");
             string url = String.Format($"http://api.openweathermap.org/data/2.5/forecast?" +
@@ -32,15 +32,10 @@ namespace WeatherApp.Services
             var response = await client.SendAsync(request);
 
             if (response.IsSuccessStatusCode)
-            {
-                var result =  response.Content.ReadAsStringAsync().Result;
+                return _dataParser.ParseForecastData(response.Content.ReadAsStringAsync().Result);
 
-                return _dataParser.ParseForecastData(result);
-            }
             else
-            {
                 throw new NotImplementedException();
-            }
         }
 
     }
