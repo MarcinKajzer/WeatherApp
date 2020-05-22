@@ -22,7 +22,11 @@ namespace WeatherApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<IForecastService, ForecastService>();
+            //services.AddHttpClient<IForecastService, ForecastService>(
+            //    client => client.BaseAddress = new System.Uri("https://maps.googleapis.com/maps/api/geocode/json"));
+
+            //services.AddHttpClient<IGoogleGeocodingService, GoogleGeocodingService>(
+            //    client => client.BaseAddress = new System.Uri("http://api.openweathermap.org/data/2.5/forecast"));
 
             services.AddHttpClient();
 

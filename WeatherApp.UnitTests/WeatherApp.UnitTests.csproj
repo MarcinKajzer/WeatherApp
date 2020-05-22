@@ -7,10 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="TestData\coordinates.txt" />
     <None Remove="TestData\forecast.txt" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="TestData\coordinates.txt" />
     <EmbeddedResource Include="TestData\forecast.txt" />
   </ItemGroup>
 

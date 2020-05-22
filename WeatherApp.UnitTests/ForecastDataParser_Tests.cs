@@ -10,7 +10,7 @@ namespace WeatherApp.UnitTests
     public class ForecastDataParser_Tests
     {
         private ForecastDataParser _parser;
-        public ITestOutputHelper _output { get; }
+        private ITestOutputHelper _output { get; }
         public ForecastDataParser_Tests(ITestOutputHelper output)
         {
             _output = output;

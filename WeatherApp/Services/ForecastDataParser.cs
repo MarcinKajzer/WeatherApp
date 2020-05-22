@@ -14,18 +14,16 @@ namespace WeatherApp.Services
         {
             ForecastDTO_get forecast_get  =  JsonConvert.DeserializeObject<ForecastDTO_get>(json);
 
-            List<ForecastDetails_post> detailsList = new List<ForecastDetails_post>();
-
-            foreach (var item in forecast_get.Details)
-            {
-                detailsList.Add(ParseSingleDetailsSet(item));
-            }
-
             ForecastDTO_post forecast_post = new ForecastDTO_post
             {
                 PlaceInfo = ParsePlaceInfo(forecast_get.PlaceInfo),
-                Details = detailsList
+                Details = new List<ForecastDetails_post>()
             };
+
+            foreach (var item in forecast_get.Details)
+            {
+                forecast_post.Details.Add(ParseSingleDetailsSet(item));
+            }
 
             return forecast_post;
         }
