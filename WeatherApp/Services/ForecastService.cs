@@ -34,12 +34,10 @@ namespace WeatherApp.Services
             if (response.IsSuccessStatusCode)
             {
                 using var responseStream = await response.Content.ReadAsStreamAsync();
-                //Branches = await JsonSerializer.DeserializeAsync<IEnumerable<GitHubBranch>>(responseStream);
             }
             else
             {
-                //GetBranchesError = true;
-                //Branches = Array.Empty<GitHubBranch>();
+
             }
         }
     }

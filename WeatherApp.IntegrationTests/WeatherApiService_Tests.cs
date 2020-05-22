@@ -6,19 +6,19 @@ using System.Net.Http;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace UnitTest
+namespace WeatherApp.IntegrationTests
 {
-    public class WeatherApiServiceTests
+    public class WeatherApiService_Tests
     {
         public ITestOutputHelper _output { get; }
         IConfiguration Configuration { get; set; }
 
-        public WeatherApiServiceTests(ITestOutputHelper output )
+        public WeatherApiService_Tests(ITestOutputHelper output )
         {
             _output = output;
 
             var builder = new ConfigurationBuilder()
-                .AddUserSecrets<WeatherApiServiceTests>();
+                .AddUserSecrets<WeatherApiService_Tests>();
 
             Configuration = builder.Build();
         }
@@ -28,8 +28,15 @@ namespace UnitTest
             string apiKey = Configuration["OpenWeatherMap.ApiKey"];
             string url = String.Format($"http://api.openweathermap.org/data/2.5/forecast?" +
                                         $"lat={latitude}&lon={longitude}&appid={apiKey}");
+            
+            //maybe without adding header
+            using(var client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json; charset=utf-8");
 
-            return new HttpClient().GetAsync(url).Result.Content.ReadAsStringAsync().Result;
+                return client.GetAsync(url).Result.Content.ReadAsStringAsync().Result;
+            }
+            
         }
 
         [Fact]

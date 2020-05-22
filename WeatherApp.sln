@@ -5,7 +5,11 @@ VisualStudioVersion = 16.0.29926.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherApp", "WeatherApp\WeatherApp.csproj", "{5AA60E65-8686-4C69-AF96-99AA68604EE3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherApp.IntegrationTests", "UnitTest\WeatherApp.IntegrationTests.csproj", "{044683F3-30EF-46C0-83C0-C4F58FBF8FFF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherApp.IntegrationTests", "WeatherApp.IntegrationTests\WeatherApp.IntegrationTests.csproj", "{C4737431-5BD1-4775-8367-875CCA33B385}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherApp.Models", "WeatherApp.Models\WeatherApp.Models.csproj", "{709F06E6-5DFB-4357-9F54-03E93A117A1F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherApp.UnitTests", "WeatherApp.UnitTests\WeatherApp.UnitTests.csproj", "{7BBD44E4-0357-444B-94E8-C3177DEF5540}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +21,18 @@ Global
 		{5AA60E65-8686-4C69-AF96-99AA68604EE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5AA60E65-8686-4C69-AF96-99AA68604EE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5AA60E65-8686-4C69-AF96-99AA68604EE3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{044683F3-30EF-46C0-83C0-C4F58FBF8FFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{044683F3-30EF-46C0-83C0-C4F58FBF8FFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{044683F3-30EF-46C0-83C0-C4F58FBF8FFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{044683F3-30EF-46C0-83C0-C4F58FBF8FFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4737431-5BD1-4775-8367-875CCA33B385}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4737431-5BD1-4775-8367-875CCA33B385}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4737431-5BD1-4775-8367-875CCA33B385}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4737431-5BD1-4775-8367-875CCA33B385}.Release|Any CPU.Build.0 = Release|Any CPU
+		{709F06E6-5DFB-4357-9F54-03E93A117A1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{709F06E6-5DFB-4357-9F54-03E93A117A1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{709F06E6-5DFB-4357-9F54-03E93A117A1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{709F06E6-5DFB-4357-9F54-03E93A117A1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BBD44E4-0357-444B-94E8-C3177DEF5540}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BBD44E4-0357-444B-94E8-C3177DEF5540}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BBD44E4-0357-444B-94E8-C3177DEF5540}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BBD44E4-0357-444B-94E8-C3177DEF5540}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
