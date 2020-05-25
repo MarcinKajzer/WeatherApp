@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -22,6 +21,9 @@ namespace WeatherApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton<IGeocodingApiClient, GeocodingApiClient>();
+            services.AddSingleton<IForecastApiClient, ForecastApiClient>();
+
             //services.AddHttpClient<IForecastService, ForecastService>(
             //    client => client.BaseAddress = new System.Uri("https://maps.googleapis.com/maps/api/geocode/json"));
 

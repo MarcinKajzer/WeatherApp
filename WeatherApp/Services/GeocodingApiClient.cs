@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -11,17 +12,19 @@ namespace WeatherApp.Services
     public class GeocodingApiClient : IGeocodingApiClient
     {
         private readonly IHttpClientFactory _clientFactory;
+        private readonly IConfiguration _config;
         private GeocodingDataParser _dataParser;
 
-        public GeocodingApiClient(IHttpClientFactory clientFactory)
+        public GeocodingApiClient(IHttpClientFactory clientFactory, IConfiguration config)
         {
             _clientFactory = clientFactory;
+            _config = config;
             _dataParser = new GeocodingDataParser();
         }
 
         public async Task<Coordinates> GetCoordinatesByGivenPlaceName(string place)
         {
-            string apiKey = Environment.GetEnvironmentVariable("Google.ApiKey");
+            string apiKey = _config["Google.ApiKey"];
             string url = String.Format($"https://maps.googleapis.com/maps/api/geocode/json?" +
                                         $"address={place}&key={apiKey}");
 
@@ -35,7 +38,7 @@ namespace WeatherApp.Services
                 return _dataParser.ParseJsonToCoordinatesObject(response.Content.ReadAsStringAsync().Result);
 
             else
-                throw new NotImplementedException();
+                return null;    
         }
     }
     

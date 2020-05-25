@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Runtime.InteropServices.ComTypes;
 using System.Text;
+using System.Threading.Tasks;
 using WeatherApp.Services;
 using Xunit;
 using Xunit.Abstractions;
@@ -28,7 +29,7 @@ namespace WeatherApp.IntegrationTests
             configuration = builder.Build();
         }
 
-        string execute(string placeName)
+        public string execute(string placeName)
         {
             string apiKey = configuration["Google.ApiKey"];
             string url = String.Format($"https://maps.googleapis.com/maps/api/geocode/json?" +
@@ -36,9 +37,7 @@ namespace WeatherApp.IntegrationTests
 
             return new HttpClient().GetAsync(url).Result.Content.ReadAsStringAsync().Result;
 
-
         }
-
 
         [Fact]
         public void returns_response()

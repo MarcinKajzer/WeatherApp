@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.Configuration;
+using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 using WeatherApp.Models.Coordinates;
@@ -10,20 +11,21 @@ namespace WeatherApp.Services
     public class ForecastApiClient : IForecastApiClient
     {
         private readonly IHttpClientFactory _clientFactory;
+        private readonly IConfiguration _config;
         private ForecastDataParser _dataParser;
-
-        public ForecastApiClient(IHttpClientFactory clientFactory)
+        public ForecastApiClient(IHttpClientFactory clientFactory, IConfiguration config)
         {
             _clientFactory = clientFactory;
+            _config = config;
             _dataParser = new ForecastDataParser();
         }
 
         public async Task<ForecastDTO_post> GetForecastByGivenCoordinates(Location coordinates)
         {
-            string apiKey = Environment.GetEnvironmentVariable("OpenWeatherMap.ApiKey");
+            string apiKey = _config["OpenWeatherMap.ApiKey"];
             string url = String.Format($"http://api.openweathermap.org/data/2.5/forecast?" +
                                         $"lat={coordinates.Latitude}&lon={coordinates.Longitude}&" +
-                                        $"appid={apiKey}");
+                                        $"appid={apiKey}&lang=pl&units=metric");
 
             var request = new HttpRequestMessage(HttpMethod.Get, url);
 
@@ -35,7 +37,7 @@ namespace WeatherApp.Services
                 return _dataParser.ParseForecastData(response.Content.ReadAsStringAsync().Result);
 
             else
-                throw new NotImplementedException();
+                return null;
         }
 
     }
