@@ -28,7 +28,7 @@ namespace WeatherApp.Services
             return forecast_post;
         }
 
-        PlaceInfo_post ParsePlaceInfo(PlaceInfo_get placeInfo)
+        private PlaceInfo_post ParsePlaceInfo(PlaceInfo_get placeInfo)
         {
             return new PlaceInfo_post
             {
@@ -39,7 +39,7 @@ namespace WeatherApp.Services
             };
         }
 
-        ForecastDetails_post ParseSingleDetailsSet(ForecastDetails_get set)
+        private ForecastDetails_post ParseSingleDetailsSet(ForecastDetails_get set)
         {
             ForecastDetails_post forecast_post =  new ForecastDetails_post
             {

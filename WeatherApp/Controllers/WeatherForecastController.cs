@@ -45,6 +45,8 @@ namespace WeatherApp.Controllers
                 return BadRequest();
             }
 
+            forecast.PlaceInfo.City = coord.Results[0].FormattedAddress;
+
             return forecast;
         }
     }

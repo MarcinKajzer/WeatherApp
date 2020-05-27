@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
 using WeatherApp.Services;
 using WeatherApp.Services.Interfaces;
 
@@ -21,14 +22,9 @@ namespace WeatherApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            
             services.AddSingleton<IGeocodingApiClient, GeocodingApiClient>();
             services.AddSingleton<IForecastApiClient, ForecastApiClient>();
-
-            //services.AddHttpClient<IForecastService, ForecastService>(
-            //    client => client.BaseAddress = new System.Uri("https://maps.googleapis.com/maps/api/geocode/json"));
-
-            //services.AddHttpClient<IGoogleGeocodingService, GoogleGeocodingService>(
-            //    client => client.BaseAddress = new System.Uri("http://api.openweathermap.org/data/2.5/forecast"));
 
             services.AddHttpClient();
 
@@ -72,15 +68,15 @@ namespace WeatherApp
 
             app.UseSpa(spa =>
             {
-                // To learn more about options for serving an Angular SPA from ASP.NET Core,
-                // see https://go.microsoft.com/fwlink/?linkid=864501
 
                 spa.Options.SourcePath = "ClientApp";
-
+                
                 if (env.IsDevelopment())
                 {
-                    spa.UseAngularCliServer(npmScript: "start");
+                    //spa.UseAngularCliServer(npmScript: "start");
+                    spa.UseProxyToSpaDevelopmentServer("http://localhost:4200");
                 }
+
             });
         }
     }

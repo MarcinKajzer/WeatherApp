@@ -26,7 +26,7 @@ namespace WeatherApp.Services
         {
             string apiKey = _config["Google.ApiKey"];
             string url = String.Format($"https://maps.googleapis.com/maps/api/geocode/json?" +
-                                        $"address={place}&key={apiKey}");
+                                        $"address={place}&key={apiKey}&language=pl");
 
             var request = new HttpRequestMessage(HttpMethod.Get, url);
 
@@ -38,7 +38,7 @@ namespace WeatherApp.Services
                 return _dataParser.ParseJsonToCoordinatesObject(response.Content.ReadAsStringAsync().Result);
 
             else
-                return null;    
+                return null;
         }
     }
     
