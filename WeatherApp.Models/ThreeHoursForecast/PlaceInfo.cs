@@ -1,11 +1,8 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace WeatherApp.Models.ForecastModel
+namespace WeatherApp.Models.ThreeHoursForecast
 {
-    public class PlaceInfo_get
+    public class PlaceInfo
     {
         [JsonProperty("name")]
         public string City { get; set; }

@@ -1,9 +1,8 @@
 ﻿using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
-using System.Text;
+using WeatherApp.Models.Coordinates;
 
-namespace WeatherApp.Models.Coordinates
+namespace WeatherApp.Models.DTOs
 {
     public partial class Coordinates
     {

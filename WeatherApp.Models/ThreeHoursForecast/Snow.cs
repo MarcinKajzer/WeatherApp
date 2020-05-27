@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace WeatherApp.Models.ForecastModel
+namespace WeatherApp.Models.ThreeHoursForecast
 {
     public class Snow
     {

@@ -1,11 +1,8 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace WeatherApp.Models.ForecastModel
+namespace WeatherApp.Models.ThreeHoursForecast
 {
-    public class WeatherDetails
+    public class MainParameters
     {
         [JsonProperty("temp")]
         public double Temperature { get; set; }

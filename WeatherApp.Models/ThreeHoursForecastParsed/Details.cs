@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace WeatherApp.Models.ForecastDTO_post
+﻿namespace WeatherApp.Models.ThreeHoursForecastParsed
 {
-    public class ForecastDetails_post
+    public class Details
     {
         public long Date { get; set; }
         public long CloudinessLevel { get; set; }

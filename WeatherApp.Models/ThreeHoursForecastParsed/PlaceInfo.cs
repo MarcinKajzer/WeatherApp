@@ -1,11 +1,13 @@
 ﻿
-namespace WeatherApp.Models.ForecastDTO_post
+namespace WeatherApp.Models.ThreeHoursForecastParsed
 {
-    public class PlaceInfo_post
+    public class PlaceInfo
     {
         public string City { get; set; }
         public string Country { get; set; }
         public long Sunrise { get; set; }
         public long Sunset { get; set; }
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
     }
 }

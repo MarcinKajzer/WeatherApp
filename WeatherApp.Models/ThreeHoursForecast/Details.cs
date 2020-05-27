@@ -1,17 +1,15 @@
 ﻿using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace WeatherApp.Models.ForecastModel
+namespace WeatherApp.Models.ThreeHoursForecast
 {
-    public class ForecastDetails_get
+    public class Details
     {
         [JsonProperty("dt")]
         public long Date { get; set; }
 
         [JsonProperty("main")]
-        public WeatherDetails MainParameters { get; set; }
+        public MainParameters MainParameters { get; set; }
 
         [JsonProperty("weather")]
         public List<Description> Description { get; set; }

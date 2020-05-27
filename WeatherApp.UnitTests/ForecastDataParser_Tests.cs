@@ -17,15 +17,15 @@ namespace WeatherApp.UnitTests
             _parser = new ForecastDataParser();
         }
 
-        ForecastDTO_post execute(string json)
+        ThreeHoursForecastParsed execute(string json)
         {
-            return _parser.ParseForecastData(json);
+            return _parser.ParseThreeHoursForecastData(json);
         }
 
         [Fact]
         public void parses_city_name()
         {
-            ForecastDTO_post result = execute(ReadEmbededResourceFile("WeatherApp.UnitTests.TestData.forecast.txt"));
+            ThreeHoursForecastParsed result = execute(ReadEmbededResourceFile("WeatherApp.UnitTests.TestData.forecast.txt"));
             
             Assert.Equal("Londyn", result.PlaceInfo.City);
         }
@@ -45,7 +45,7 @@ namespace WeatherApp.UnitTests
         [Fact]
         public void parses_current_temperature()
         {
-            ForecastDTO_post result = execute(ReadEmbededResourceFile("WeatherApp.UnitTests.TestData.forecast.txt"));
+            ThreeHoursForecastParsed result = execute(ReadEmbededResourceFile("WeatherApp.UnitTests.TestData.forecast.txt"));
             
             Assert.Equal(18.93, result.Details[0].Temperature);
         }
@@ -53,7 +53,7 @@ namespace WeatherApp.UnitTests
         [Fact]
         public void parses_feels_like_temperature()
         {
-            ForecastDTO_post result = execute(ReadEmbededResourceFile("WeatherApp.UnitTests.TestData.forecast.txt"));
+            ThreeHoursForecastParsed result = execute(ReadEmbededResourceFile("WeatherApp.UnitTests.TestData.forecast.txt"));
 
             Assert.Equal(15.28, result.Details[0].FeelsLikeTemperature);
         }
@@ -61,7 +61,7 @@ namespace WeatherApp.UnitTests
         [Fact]
         public void parses_min_temperature()
         {
-            ForecastDTO_post result = execute(ReadEmbededResourceFile("WeatherApp.UnitTests.TestData.forecast.txt"));
+            ThreeHoursForecastParsed result = execute(ReadEmbededResourceFile("WeatherApp.UnitTests.TestData.forecast.txt"));
 
             Assert.Equal(18.48, result.Details[0].TemperatureMin);
         }
@@ -69,7 +69,7 @@ namespace WeatherApp.UnitTests
         [Fact]
         public void parses_max_temperature()
         {
-            ForecastDTO_post result = execute(ReadEmbededResourceFile("WeatherApp.UnitTests.TestData.forecast.txt"));
+            ThreeHoursForecastParsed result = execute(ReadEmbededResourceFile("WeatherApp.UnitTests.TestData.forecast.txt"));
 
             Assert.Equal(18.93, result.Details[0].TemperatureMax);
         }
@@ -77,7 +77,7 @@ namespace WeatherApp.UnitTests
         [Fact]
         public void parses_clouds()
         {
-            ForecastDTO_post result = execute(ReadEmbededResourceFile("WeatherApp.UnitTests.TestData.forecast.txt"));
+            ThreeHoursForecastParsed result = execute(ReadEmbededResourceFile("WeatherApp.UnitTests.TestData.forecast.txt"));
 
             Assert.Equal(100, result.Details[0].CloudinessLevel);
         }
@@ -85,7 +85,7 @@ namespace WeatherApp.UnitTests
         [Fact]
         public void parses_humidity()
         {
-            ForecastDTO_post result = execute(ReadEmbededResourceFile("WeatherApp.UnitTests.TestData.forecast.txt"));
+            ThreeHoursForecastParsed result = execute(ReadEmbededResourceFile("WeatherApp.UnitTests.TestData.forecast.txt"));
 
             Assert.Equal(37, result.Details[0].Humidity);
         }
@@ -93,7 +93,7 @@ namespace WeatherApp.UnitTests
         [Fact]
         public void parses_preasure()
         {
-            ForecastDTO_post result = execute(ReadEmbededResourceFile("WeatherApp.UnitTests.TestData.forecast.txt"));
+            ThreeHoursForecastParsed result = execute(ReadEmbededResourceFile("WeatherApp.UnitTests.TestData.forecast.txt"));
 
             Assert.Equal(1016, result.Details[0].Pressure);
         }
@@ -101,14 +101,14 @@ namespace WeatherApp.UnitTests
         [Fact]
         public void parses_wind_speed()
         {
-            ForecastDTO_post result = execute(ReadEmbededResourceFile("WeatherApp.UnitTests.TestData.forecast.txt"));
+            ThreeHoursForecastParsed result = execute(ReadEmbededResourceFile("WeatherApp.UnitTests.TestData.forecast.txt"));
 
             Assert.Equal(3.31, result.Details[0].WindSpeed);
         }
         [Fact]
         public void parses_wind_direction()
         {
-            ForecastDTO_post result = execute(ReadEmbededResourceFile("WeatherApp.UnitTests.TestData.forecast.txt"));
+            ThreeHoursForecastParsed result = execute(ReadEmbededResourceFile("WeatherApp.UnitTests.TestData.forecast.txt"));
 
             Assert.Equal(189, result.Details[0].WindDirection);
         }
@@ -116,7 +116,7 @@ namespace WeatherApp.UnitTests
         [Fact]
         public void parses_forecast_description_text()
         {
-            ForecastDTO_post result = execute(ReadEmbededResourceFile("WeatherApp.UnitTests.TestData.forecast.txt"));
+            ThreeHoursForecastParsed result = execute(ReadEmbededResourceFile("WeatherApp.UnitTests.TestData.forecast.txt"));
 
             Assert.Equal("ca³kowite zachmurzenie", result.Details[0].WeatherDescription);
         }
@@ -124,7 +124,7 @@ namespace WeatherApp.UnitTests
         [Fact]
         public void parses_forecast_description_summary()
         {
-            ForecastDTO_post result = execute(ReadEmbededResourceFile("WeatherApp.UnitTests.TestData.forecast.txt"));
+            ThreeHoursForecastParsed result = execute(ReadEmbededResourceFile("WeatherApp.UnitTests.TestData.forecast.txt"));
 
             Assert.Equal("Clouds", result.Details[0].WeatherSummary);
         }
