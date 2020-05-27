@@ -1,11 +1,12 @@
 ﻿using System.Threading.Tasks;
 using WeatherApp.Models.Coordinates;
-using WeatherApp.Models.ForecastDTO_post;
+using WeatherApp.Models.DTOs;
 
 namespace WeatherApp.Services.Interfaces
 {
     public interface IForecastApiClient
     {
-        Task<ForecastDTO_post> GetForecastByGivenCoordinates(Location coordinates);
+        Task<ForecastDTO> GetForecast(Location coordinates);
+      
     }
 }

@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json;
-using WeatherApp.Models.Coordinates;
+using WeatherApp.Models.DTOs;
 
 namespace WeatherApp.Services
 {

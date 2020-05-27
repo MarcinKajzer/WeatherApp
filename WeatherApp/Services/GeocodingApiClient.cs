@@ -1,10 +1,8 @@
 ﻿using Microsoft.Extensions.Configuration;
-using Newtonsoft.Json;
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
-using WeatherApp.Models.Coordinates;
-using WeatherApp.Models.ForecastDTO_post;
+using WeatherApp.Models.DTOs;
 using WeatherApp.Services.Interfaces;
 
 namespace WeatherApp.Services

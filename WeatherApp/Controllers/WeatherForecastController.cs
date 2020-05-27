@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using WeatherApp.Models.Coordinates;
-using WeatherApp.Models.ForecastDTO_post;
-using WeatherApp.Services;
+using WeatherApp.Models.DTOs;
 using WeatherApp.Services.Interfaces;
 
 namespace WeatherApp.Controllers
@@ -28,7 +23,7 @@ namespace WeatherApp.Controllers
 
         
         [HttpGet]
-        public async Task<ActionResult<ForecastDTO_post>> Get([Required] string name)
+        public async Task<ActionResult<ForecastDTO>> Get([Required] string name)
         {
             Coordinates coord = await _geocodingClient.GetCoordinatesByGivenPlaceName(name);
            
@@ -37,15 +32,14 @@ namespace WeatherApp.Controllers
                 return BadRequest();
             }
 
-            ForecastDTO_post forecast = await _forecastClient.GetForecastByGivenCoordinates(coord.Results[0]
-                                                             .Geometry.Location);
+            ForecastDTO forecast = await _forecastClient.GetForecast(coord.Results[0].Geometry.Location);
 
             if (forecast == null)
             {
                 return BadRequest();
             }
-
-            forecast.PlaceInfo.City = coord.Results[0].FormattedAddress;
+            
+            forecast.ThreeHoursForecast.PlaceInfo.City = coord.Results[0].FormattedAddress;
 
             return forecast;
         }
