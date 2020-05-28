@@ -7,8 +7,8 @@ namespace WeatherApp.Models.DTOs
 {
     public class ThreeHoursForecastParsed
     {
-        public PlaceInfo PlaceInfo { get; set; }
-        public List<Details> Details { get; set; }
+        public PlaceInfoParsed PlaceInfo { get; set; }
+        public List<DetailsParsed> Details { get; set; }
 
     }
 }

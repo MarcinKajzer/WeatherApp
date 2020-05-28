@@ -1,4 +1,4 @@
-export interface Detail {
+export interface ThreeHoursDetails {
     date: number;
     cloudinessLevel: number;
     weatherSummary: string;

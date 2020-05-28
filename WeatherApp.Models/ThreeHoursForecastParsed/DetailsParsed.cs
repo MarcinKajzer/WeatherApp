@@ -1,6 +1,6 @@
 ﻿namespace WeatherApp.Models.ThreeHoursForecastParsed
 {
-    public class Details
+    public class DetailsParsed
     {
         public long Date { get; set; }
         public long CloudinessLevel { get; set; }

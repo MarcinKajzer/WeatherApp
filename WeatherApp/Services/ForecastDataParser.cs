@@ -1,7 +1,6 @@
 ﻿
 using Newtonsoft.Json;
 using System.Collections.Generic;
-using System.Linq;
 using WeatherApp.Models.DailyForecast;
 using WeatherApp.Models.DailyForecastParsed;
 using WeatherApp.Models.DTOs;
@@ -19,7 +18,7 @@ namespace WeatherApp.Services
             ThreeHoursForecastParsed forecastParsed = new ThreeHoursForecastParsed
             {
                 PlaceInfo = ParsePlaceInfo(forecast.PlaceInfo),
-                Details = new List<Models.ThreeHoursForecastParsed.Details>()
+                Details = new List<DetailsParsed>()
             };
 
             foreach (var item in forecast.Details)
@@ -28,9 +27,9 @@ namespace WeatherApp.Services
             return forecastParsed;
         }
 
-        private Models.ThreeHoursForecastParsed.PlaceInfo ParsePlaceInfo(Models.ThreeHoursForecast.PlaceInfo placeInfo)
+        private PlaceInfoParsed ParsePlaceInfo(PlaceInfo placeInfo)
         {
-            return new Models.ThreeHoursForecastParsed.PlaceInfo
+            return new PlaceInfoParsed
             {
                 City = placeInfo.City,
                 Country = placeInfo.Country,
@@ -39,9 +38,9 @@ namespace WeatherApp.Services
             };
         }
 
-        private Models.ThreeHoursForecastParsed.Details ParseSingleDetailsSet(Models.ThreeHoursForecast.Details set)
+        private DetailsParsed ParseSingleDetailsSet(Details set)
         {
-            Models.ThreeHoursForecastParsed.Details details =  new Models.ThreeHoursForecastParsed.Details
+            DetailsParsed details =  new DetailsParsed
             {
                 Date = set.Date,
                 CloudinessLevel = set.Clouds.CloudinessLevel,
@@ -71,7 +70,7 @@ namespace WeatherApp.Services
 
             DailyForecastParsed forecastParsed = new DailyForecastParsed
             {
-                Details = new List<Models.DailyForecastParsed.SingleDayForecast>()
+                Details = new List<Models.DailyForecastParsed.SingleDayForecastParsed>()
             };
 
             foreach (var item in forecast.SingleDay)
@@ -80,9 +79,9 @@ namespace WeatherApp.Services
             return forecastParsed;
         }
 
-        private Models.DailyForecastParsed.SingleDayForecast ParseSingleDayData(Models.DailyForecast.SingleDayForecast data)
+        private SingleDayForecastParsed ParseSingleDayData(SingleDayForecast data)
         {
-            Models.DailyForecastParsed.SingleDayForecast day = new Models.DailyForecastParsed.SingleDayForecast
+            SingleDayForecastParsed day = new SingleDayForecastParsed
             {
                 Date = data.Date,
                 TemperatureMin = data.Temperature.Min,
@@ -95,7 +94,7 @@ namespace WeatherApp.Services
                 WindDirection = data.WindDeg,
                 WeatherSummary = data.Description[0].Summary,
                 WeatherDescription = data.Description[0].Text,
-                Clouds = data.Clouds
+                CloudinessLevel = data.Clouds
 
             };
 

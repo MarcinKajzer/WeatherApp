@@ -5,6 +5,6 @@ namespace WeatherApp.Models.DTOs
 {
     public class DailyForecastParsed
     {
-        public List<SingleDayForecast> Details { get; set; }
+        public List<SingleDayForecastParsed> Details { get; set; }
     }
 }

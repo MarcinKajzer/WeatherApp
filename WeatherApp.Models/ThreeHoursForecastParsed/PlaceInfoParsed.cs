@@ -1,7 +1,7 @@
 ﻿
 namespace WeatherApp.Models.ThreeHoursForecastParsed
 {
-    public class PlaceInfo
+    public class PlaceInfoParsed
     {
         public string City { get; set; }
         public string Country { get; set; }

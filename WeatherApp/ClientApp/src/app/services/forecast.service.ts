@@ -8,29 +8,20 @@ import { Forecast } from '../Models/Forecast';
 })
 export class ForecastService {
 
-  private place: string;
+  private baseUrl = 'https://localhost:44387/WeatherForecast?place=';
   private url: string;
 
   public forecast = new Subject<Forecast>();
 
   constructor(private httpClent: HttpClient) { }
 
-  private setPlace(place: string) {
-    this.place = place;
-  }
-
-  private setUrl() {
-    this.url = 'https://localhost:44387/WeatherForecast?name=' + this.place;
-  }
-
   getForecast(place: string) {
 
-    this.setPlace(place);
-    this.setUrl();
+    this.url = this.baseUrl + place;
 
-    this.httpClent.get<Forecast>(this.url).subscribe(result => {
-      console.log(result);
-      this.forecast.next(result);
+    this.httpClent.get(this.url).subscribe(result => {
+      console.log(result); // potem usunąć
+      // this.forecast.next(result);
     });
 
   }

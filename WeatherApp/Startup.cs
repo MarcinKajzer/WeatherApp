@@ -23,8 +23,9 @@ namespace WeatherApp
         public void ConfigureServices(IServiceCollection services)
         {
             
-            services.AddSingleton<IGeocodingApiClient, GeocodingApiClient>();
-            services.AddSingleton<IForecastApiClient, ForecastApiClient>();
+            services.AddSingleton<IGeocodingService, GeocodingService>();
+            services.AddSingleton<IForecastService, ForecastService>();
+            services.AddSingleton<IHttpClient, HttpClient>();
 
             services.AddHttpClient();
 

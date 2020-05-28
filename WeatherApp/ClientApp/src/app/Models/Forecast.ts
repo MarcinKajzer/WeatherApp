@@ -1,8 +1,18 @@
-import { PlaceInfo } from './PlaceInfo';
-import { Detail } from './ForecastDetails';
-
+import { ThreeHoursForecast } from './ThreeHoursForecast';
+import { DailyForecast } from './DailyForecast';
 
 export interface Forecast {
-    placeInfo: PlaceInfo;
-    details: Detail[];
+    threeHoursForecast: ThreeHoursForecast;
+    dailyForecast: DailyForecast;
 }
+
+
+
+
+
+
+
+
+
+
+

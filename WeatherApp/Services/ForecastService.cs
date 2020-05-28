@@ -2,20 +2,21 @@
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
+using WeatherApp.Models;
 using WeatherApp.Models.Coordinates;
 using WeatherApp.Models.DTOs;
 using WeatherApp.Services.Interfaces;
 
 namespace WeatherApp.Services
 {
-    public class ForecastApiClient : IForecastApiClient
+    public class ForecastService : IForecastService
     {
         private readonly IHttpClientFactory _clientFactory;
         private readonly IConfiguration _config;
         private ForecastDataParser _dataParser;
         private string _apiKey;
         
-        public ForecastApiClient(IHttpClientFactory clientFactory, IConfiguration config)
+        public ForecastService(IHttpClientFactory clientFactory, IConfiguration config)
         {
             _clientFactory = clientFactory;
             _config = config;
@@ -23,19 +24,19 @@ namespace WeatherApp.Services
             _apiKey = _config["OpenWeatherMap.ApiKey"];
         }
 
-        public async Task<ForecastDTO> GetForecast(Location coordinates)
+        public async Task<ForecastDTO> GetForecast(CoordinatesParsed coord)
         {
             return new ForecastDTO
             {
-                DailyForecast = await GetDailyForecast(coordinates),
-                ThreeHoursForecast = await GetThreeHourForecast(coordinates)
+                DailyForecast = await GetDailyForecast(coord),
+                ThreeHoursForecast = await GetThreeHourForecast(coord)
             };
         }
 
-        private async Task<ThreeHoursForecastParsed> GetThreeHourForecast(Location coordinates)
+        private async Task<ThreeHoursForecastParsed> GetThreeHourForecast(CoordinatesParsed coord)
         {
             string url = String.Format($"http://api.openweathermap.org/data/2.5/forecast?" +
-                                        $"lat={coordinates.Latitude}&lon={coordinates.Longitude}&" +
+                                        $"lat={coord.Latitude}&lon={coord.Longitude}&" +
                                         $"appid={_apiKey}&lang=pl&units=metric");
 
             string result = await HttpGet(url);
@@ -43,10 +44,10 @@ namespace WeatherApp.Services
             return _dataParser.ParseThreeHoursForecastData(result);
         }
 
-        private async Task<DailyForecastParsed> GetDailyForecast(Location coordinates)
+        private async Task<DailyForecastParsed> GetDailyForecast(CoordinatesParsed coord)
         {
             string url = String.Format($"https://api.openweathermap.org/data/2.5/onecall" +
-                                        $"?lat={coordinates.Latitude}&lon={coordinates.Longitude}" +
+                                        $"?lat={coord.Latitude}&lon={coord.Longitude}" +
                                         $"&appid={_apiKey}&units=metric&lang=pl" +
                                         $"&exclude=hourly,current,minutelly");
 
