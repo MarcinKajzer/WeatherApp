@@ -1,0 +1,40 @@
+<div>
+            
+    <p>Podsumowanie: {{forecast.weatherSummary}}</p>
+
+    <p>Opis prognozy: {{forecast.weatherDescription}}</p>
+
+    <p>Temperatura maksymalna: {{forecast.temperatureMax}}</p>
+
+    <p>Temperatura minimalna: {{forecast.temperatureMin}}</p>
+
+    <p>Prędkość wiatru: {{forecast.windSpeed}}</p>
+
+    <p>Kierunek wiatru: {{forecast.windDirection}}</p>
+
+    <p>Zachmurzenie: {{forecast.cloudinessLevel}}%</p>
+
+    <p>Temperatura odczuwalna w dzień: {{forecast.feelsLikeTemperatureDay}}</p>
+
+    <p>Temperatura odczuwalna w nocy: {{forecast.feelsLikeTemperatureNight}}</p>
+
+    <p>Wilgotność: {{forecast.humidity}}%</p>
+
+    <p>Ciśnienie: {{forecast.pressure}}</p>
+
+    <ng-container *ngIf="forecast.rain != null ; else Rain">
+        Deszcz: {{forecast.rain}}
+    </ng-container>
+    <ng-template #Rain>
+        Deszcz: Brak opadów deszczu.
+    </ng-template>
+    <br>
+    <ng-container *ngIf="forecast.snow != null ; else Snow">
+        Śnieg: {{forecast.snow}}
+    </ng-container>
+    <ng-template #Snow>
+        Śnieg: Brak opadów śniegu
+    </ng-template>
+
+    <hr>
+</div>

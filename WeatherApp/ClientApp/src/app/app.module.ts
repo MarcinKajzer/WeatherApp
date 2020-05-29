@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { SearchComponent } from './Components/search/search.component';
 import { SearchSettingsComponent } from './Components/search-settings/search-settings.component';
 import { ForecastComponent } from './Components/forecast/forecast.component';
+import { DailyForecastComponent } from './Components/daily-forecast/daily-forecast.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchComponent,
     SearchSettingsComponent,
-    ForecastComponent
+    ForecastComponent,
+    DailyForecastComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,6 @@
 import { Injectable, OnChanges } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
 import { Forecast } from '../Models/Forecast';
 
 @Injectable({
@@ -11,19 +11,23 @@ export class ForecastService {
   private baseUrl = 'https://localhost:44387/WeatherForecast?place=';
   private url: string;
 
-  public forecast = new Subject<Forecast>();
+  private forecast = new Subject<Forecast>();
 
   constructor(private httpClent: HttpClient) { }
 
-  getForecast(place: string) {
+  setPlace(place: string) {
 
     this.url = this.baseUrl + place;
 
-    this.httpClent.get(this.url).subscribe(result => {
-      console.log(result); // potem usunąć
-      // this.forecast.next(result);
+    this.httpClent.get<Forecast>(this.url).subscribe(result => {
+     
+      this.forecast.next(result);
     });
 
+  }
+
+  getForecast(): Observable<Forecast>{
+    return this.forecast.asObservable();
   }
 
 }

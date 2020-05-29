@@ -13,10 +13,17 @@ export class ForecastComponent implements OnInit {
 
   constructor(private forecastService: ForecastService) {
 
-    this.forecastService.forecast.subscribe(result => {
+    this.forecastService.getForecast().subscribe(result => {
+
       this.forecast = result;
     });
+
   }
+
+  aaa(){
+    console.log(this.forecast);
+  }
+
 
   ngOnInit(): void {
   }

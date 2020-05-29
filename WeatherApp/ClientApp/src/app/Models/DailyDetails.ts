@@ -10,7 +10,7 @@ export interface DailyDetails {
     windDirection: number;
     weatherSummary: string;
     weatherDescription: string;
-    clouds: number;
+    cloudinessLevel: number;
     rain?: number;
     snow?: any;
 }

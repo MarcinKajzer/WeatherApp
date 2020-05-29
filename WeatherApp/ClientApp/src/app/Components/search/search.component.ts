@@ -16,7 +16,7 @@ export class SearchComponent implements OnInit {
   }
 
   getForecast() {
-    this.forecastServce.getForecast(this.place);
+    this.forecastServce.setPlace(this.place);
   }
 
 
