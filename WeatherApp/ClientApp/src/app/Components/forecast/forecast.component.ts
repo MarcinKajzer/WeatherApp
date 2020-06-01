@@ -14,7 +14,6 @@ export class ForecastComponent implements OnInit {
   constructor(private forecastService: ForecastService) {
 
     this.forecastService.getForecast().subscribe(result => {
-
       this.forecast = result;
     });
 

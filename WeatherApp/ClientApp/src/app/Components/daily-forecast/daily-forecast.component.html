@@ -1,5 +1,5 @@
 <div>
-            
+
     <p>Podsumowanie: {{forecast.weatherSummary}}</p>
 
     <p>Opis prognozy: {{forecast.weatherDescription}}</p>
@@ -8,32 +8,32 @@
 
     <p>Temperatura minimalna: {{forecast.temperatureMin}}</p>
 
-    <p>Prędkość wiatru: {{forecast.windSpeed}}</p>
+    <p appDisplay param="windSpeed">Prędkość wiatru: {{forecast.windSpeed}}</p>
 
-    <p>Kierunek wiatru: {{forecast.windDirection}}</p>
+    <p appDisplay param="windDirection">Kierunek wiatru: {{forecast.windDirection}}</p>
 
-    <p>Zachmurzenie: {{forecast.cloudinessLevel}}%</p>
+    <p appDisplay param="cloudinessLevel">Zachmurzenie: {{forecast.cloudinessLevel}}%</p>
 
-    <p>Temperatura odczuwalna w dzień: {{forecast.feelsLikeTemperatureDay}}</p>
+    <p appDisplay param="feelsLikeTemp">Temperatura odczuwalna w dzień: {{forecast.feelsLikeTemperatureDay}}</p>
 
-    <p>Temperatura odczuwalna w nocy: {{forecast.feelsLikeTemperatureNight}}</p>
+    <p appDisplay param="feelsLikeTemp">Temperatura odczuwalna w nocy: {{forecast.feelsLikeTemperatureNight}}</p>
 
-    <p>Wilgotność: {{forecast.humidity}}%</p>
+    <p appDisplay param="humidity">Wilgotność: {{forecast.humidity}}%</p>
 
-    <p>Ciśnienie: {{forecast.pressure}}</p>
+    <p appDisplay param="pressure">Ciśnienie: {{forecast.pressure}}</p>
 
     <ng-container *ngIf="forecast.rain != null ; else Rain">
-        Deszcz: {{forecast.rain}}
+        <p appDisplay param="rain">Deszcz: {{forecast.rain}}</p>
     </ng-container>
     <ng-template #Rain>
-        Deszcz: Brak opadów deszczu.
+        <p appDisplay param="rain">Deszcz: Brak opadów deszczu.</p>
     </ng-template>
     <br>
     <ng-container *ngIf="forecast.snow != null ; else Snow">
-        Śnieg: {{forecast.snow}}
+        <p appDisplay param="snow">Śnieg: {{forecast.snow}}</p>
     </ng-container>
     <ng-template #Snow>
-        Śnieg: Brak opadów śniegu
+        <p appDisplay param="snow"> Śnieg: Brak opadów śniegu</p>
     </ng-template>
 
     <hr>

@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {Forecast} from './Models/Forecast';
+import { Forecast } from './Models/Forecast';
 import { ForecastService } from './services/forecast.service';
 
 @Component({
@@ -10,10 +10,12 @@ import { ForecastService } from './services/forecast.service';
 })
 export class AppComponent {
 
- 
-  
 
-  constructor() { }
+
+  constructor() {
+  }
+
+
 
 
 

@@ -22,9 +22,9 @@ namespace WeatherApp.Controllers
             _forecastClient = forecastClient;
         }
 
-        
+        [Route("GetByPlace")]
         [HttpGet]
-        public async Task<ActionResult<ForecastDTO>> Get([Required] string place)
+        public async Task<ActionResult<ForecastDTO>> GetByPlace([Required] string place)
         {
             CoordinatesParsed coord = await _geocodingClient.GetCoordinates(place);
            
@@ -44,6 +44,21 @@ namespace WeatherApp.Controllers
 
             return forecast;
         }
+
+        //[HttpGet]
+        //public async Task<ActionResult<ForecastDTO>> GetByCoordinates([Required] double lat, [Required] double lng)
+        //{
+        //    ForecastDTO forecast = await _forecastClient.GetForecast( );
+
+        //    if (forecast == null)
+        //    {
+        //        return BadRequest();
+        //    }
+
+        //    forecast.ThreeHoursForecast.PlaceInfo.City = coord.Place;
+
+        //    return forecast;
+        //}
     }
 
 }
