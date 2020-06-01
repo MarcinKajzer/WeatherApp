@@ -10,6 +10,11 @@ import { SearchSettingsComponent } from './Components/search-settings/search-set
 import { ForecastComponent } from './Components/forecast/forecast.component';
 import { DailyForecastComponent } from './Components/daily-forecast/daily-forecast.component';
 import { DisplayDirective } from './Shared/display.directive';
+import { registerLocaleData } from '@angular/common';
+import localePl from '@angular/common/locales/pl';
+import { CapitalizeFirstPipe } from './Shared/capitalize-first.pipe';
+
+registerLocaleData(localePl);
 
 @NgModule({
   declarations: [
@@ -18,7 +23,8 @@ import { DisplayDirective } from './Shared/display.directive';
     SearchSettingsComponent,
     ForecastComponent,
     DailyForecastComponent,
-    DisplayDirective
+    DisplayDirective,
+    CapitalizeFirstPipe
   ],
   imports: [
     BrowserModule,

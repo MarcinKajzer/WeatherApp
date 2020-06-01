@@ -10,6 +10,8 @@ import { ForecastService } from 'src/app/services/forecast.service';
 export class ForecastComponent implements OnInit {
 
   forecast: Forecast;
+  currentDate = new Date();
+
 
   constructor(private forecastService: ForecastService) {
 

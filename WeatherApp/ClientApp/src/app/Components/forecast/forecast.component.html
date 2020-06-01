@@ -1,3 +1,5 @@
+<p>{{currentDate | date: 'EEEE dd. MMMM yyyy, hh:mm': '+0200' : 'pl' | capitalizeFirst}}</p>
+<hr>
 <div *ngIf="forecast != null">
 
     <ng-container *ngFor="let day of forecast.dailyForecast.details">
@@ -5,9 +7,6 @@
         <app-daily-forecast [forecast] = "day"></app-daily-forecast>
       
     </ng-container>
-
-
-
 
 </div>
 

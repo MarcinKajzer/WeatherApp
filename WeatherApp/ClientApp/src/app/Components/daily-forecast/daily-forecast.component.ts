@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { DailyForecast } from 'src/app/Models/DailyForecast';
 import { DailyDetails } from 'src/app/Models/DailyDetails';
 
 @Component({
@@ -7,14 +6,15 @@ import { DailyDetails } from 'src/app/Models/DailyDetails';
   templateUrl: './daily-forecast.component.html',
   styleUrls: ['./daily-forecast.component.css']
 })
-export class DailyForecastComponent implements OnInit {
+export class DailyForecastComponent {
 
   @Input()
   forecast: DailyDetails;
 
+  currentDate = new Date();
+
   constructor() { }
 
-  ngOnInit(): void {
-  }
+
 
 }
