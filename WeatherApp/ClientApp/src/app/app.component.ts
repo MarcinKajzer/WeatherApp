@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Forecast } from './Models/Forecast';
-import { ForecastService } from './services/forecast.service';
+import * as moment from 'moment';
+import 'moment/locale/pl';
 
 @Component({
   selector: 'app-root',
@@ -10,14 +9,8 @@ import { ForecastService } from './services/forecast.service';
 })
 export class AppComponent {
 
-
-
   constructor() {
   }
-
-
-
-
 
 }
 

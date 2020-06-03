@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
+import { ChartsModule } from 'ng2-charts';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +15,8 @@ import { DisplayDirective } from './Shared/display.directive';
 import { registerLocaleData } from '@angular/common';
 import localePl from '@angular/common/locales/pl';
 import { CapitalizeFirstPipe } from './Shared/capitalize-first.pipe';
+import { ChartsComponent } from './Components/charts/charts.component';
+import { LineChartComponent } from './Components/line-chart/line-chart.component';
 
 registerLocaleData(localePl);
 
@@ -24,13 +28,16 @@ registerLocaleData(localePl);
     ForecastComponent,
     DailyForecastComponent,
     DisplayDirective,
-    CapitalizeFirstPipe
+    CapitalizeFirstPipe,
+    ChartsComponent,
+    LineChartComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ChartsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

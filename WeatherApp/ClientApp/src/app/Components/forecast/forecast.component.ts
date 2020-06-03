@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Forecast } from 'src/app/Models/Forecast';
 import { ForecastService } from 'src/app/services/forecast.service';
+import { DailyForecast } from 'src/app/Models/DailyForecast';
+import { ChartsService } from 'src/app/services/charts.service';
 
 @Component({
   selector: 'app-forecast',
@@ -9,24 +11,22 @@ import { ForecastService } from 'src/app/services/forecast.service';
 })
 export class ForecastComponent implements OnInit {
 
-  forecast: Forecast;
+  forecast: DailyForecast;
   currentDate = new Date();
 
+  constructor(private forecastService: ForecastService, private chartsService: ChartsService) {
 
-  constructor(private forecastService: ForecastService) {
-
-    this.forecastService.getForecast().subscribe(result => {
+    this.forecastService.getDailyForecast().subscribe(result => {
       this.forecast = result;
     });
-
-  }
-
-  aaa(){
-    console.log(this.forecast);
   }
 
 
   ngOnInit(): void {
+  }
+
+  choseDay(nr: number) {
+    this.chartsService.selectDay(nr);
   }
 
 }
