@@ -1,12 +1,15 @@
-<p>{{currentDate | date: 'EEEE dd. MMMM yyyy, hh:mm': '+0200' : 'pl' | capitalizeFirst}}</p>
+<p class="date">{{currentDate | date: 'EEEE dd. MMMM yyyy, hh:mm': '+0200' : 'pl' | capitalizeFirst}}</p>
 
-<hr>
 <div *ngIf="forecast != null">
 
     <ng-container *ngFor="let day of forecast.details.slice(0,5); let i = index">
         
-        <app-daily-forecast [forecast] = "day" (click)=choseDay(i)></app-daily-forecast>
+        <app-daily-forecast [forecast] = "day" (click)=choseDay(i) [ngClass]="{'selected': selectedDay === i}"></app-daily-forecast>
       
+        <!-- <ng-container *ngIf="selectedDay === i">
+            <app-charts></app-charts>
+        </ng-container> -->
+
     </ng-container>
 
 </div>

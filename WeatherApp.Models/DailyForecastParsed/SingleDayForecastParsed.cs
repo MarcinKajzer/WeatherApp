@@ -2,7 +2,6 @@
 {
     public class SingleDayForecastParsed
     {
-       
         public long Date { get; set; }
         public double TemperatureMin { get; set; }
         public double TemperatureMax { get; set; }

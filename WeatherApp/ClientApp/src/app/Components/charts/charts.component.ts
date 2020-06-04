@@ -18,9 +18,6 @@ export class ChartsComponent {
   constructor(private chartService: ChartsService) {
     this.chartService.extractedPropsObs.subscribe(result => {
 
-      console.log('z charts component');
-      console.log(result);
-
       this.xAxes = result.hours;
 
       this.chartData = [
@@ -28,7 +25,7 @@ export class ChartsComponent {
         { data: result.feelsLikeTemperature, label: 'Temperatura odczuwalna °C' },
         { data: result.cloudinessLevel, label: 'Zachmurzenie %' },
         { data: result.humidity, label: 'Wilgotność %' },
-        { data: result.pressure, label: 'Ciśnienie %' },
+        { data: result.pressure, label: 'Ciśnienie hPs' },
        
       ];
     });

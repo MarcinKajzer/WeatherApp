@@ -14,6 +14,8 @@ export class ForecastComponent implements OnInit {
   forecast: DailyForecast;
   currentDate = new Date();
 
+  selectedDay = 0;
+
   constructor(private forecastService: ForecastService, private chartsService: ChartsService) {
 
     this.forecastService.getDailyForecast().subscribe(result => {
@@ -26,6 +28,7 @@ export class ForecastComponent implements OnInit {
   }
 
   choseDay(nr: number) {
+    this.selectedDay = nr;
     this.chartsService.selectDay(nr);
   }
 

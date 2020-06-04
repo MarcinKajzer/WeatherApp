@@ -1,0 +1,24 @@
+.date{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+app-daily-forecast{
+    margin: 5px auto 0;
+    position: relative;
+    height: 120px;
+    display: block;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    background: linear-gradient(45deg, #ffffff, #e6e6e6);
+    box-shadow:  11px -11px 23px #ebebeb, 
+                -11px 11px 23px #ffffff;
+}
+
+.selected{
+    background: linear-gradient(145deg, #e6e6e6, #ffffff);
+    box-shadow:  9px 9px 18px #ededed, 
+                -9px -9px 18px #ffffff;
+    padding: 5px;
+}
+

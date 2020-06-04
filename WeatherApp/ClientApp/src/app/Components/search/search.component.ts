@@ -17,8 +17,8 @@ export class SearchComponent implements OnInit {
   }
 
   getForecast() {
+    // this.chartsService.selectDay(0);
     this.forecastServce.setPlace(this.place);
-    this.chartsService.selectDay(0);
   }
 
 

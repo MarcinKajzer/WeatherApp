@@ -63,18 +63,15 @@ export class LineChartComponent implements OnChanges {
     this.lineChartData = [];
     this.lineChartData.push(this.data);
 
-    if(this.optionalData !== undefined){
+    if (this.optionalData !== undefined) {
       this.lineChartData.push(this.optionalData);
     }
 
-    this.lineChartLabels= [];
+    this.lineChartLabels = [];
     this.lineChartLabels = this.xAxes;
 
-    
   }
 
-
- 
   public hideOne() {
     const isHidden = this.chart.isDatasetHidden(1);
     this.chart.hideDataset(1, !isHidden);
@@ -83,6 +80,5 @@ export class LineChartComponent implements OnChanges {
   public changeChartType(): void {
     this.lineChartType = this.lineChartType === 'bar' ? 'line' : 'bar';
   }
-
 
 }

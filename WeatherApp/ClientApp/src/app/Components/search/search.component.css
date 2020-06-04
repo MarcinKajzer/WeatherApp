@@ -1,0 +1,42 @@
+.searchGroup{
+    width: 80%;
+    max-width: 350px;
+    margin: 0 auto;
+    height: 100%;
+    background: white;
+}
+
+button{
+    background: none;
+    border: none;
+    border-bottom: 1px solid gray;
+    outline: none;
+    width: 10%;
+    height: 30px;
+    background: url(../../../assets/icons/search.svg) no-repeat;
+    background-position: center;
+    background-size: cover;
+    vertical-align: bottom
+    
+}
+
+input{
+    border: none;
+    border-bottom: 1px solid gray;
+    outline: none;
+    width: 90%;
+    font-size: 20px;
+    color: #9A9292;
+}
+
+input:focus, input:focus ~ button{
+    border-color: blue;
+}
+
+
+@media (min-width: 1200px){
+    .searchGroup{
+        margin: 0;
+        padding: 10px 20px;
+    }
+}
