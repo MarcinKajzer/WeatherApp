@@ -4,7 +4,6 @@ app-search-settings{
     position: fixed;
     z-index: 99;
     margin-top: -90px;
-    
     color: white;
 }   
 
@@ -13,6 +12,7 @@ app-search{
     height: 50px;
     margin-top: 90px;
 }
+
 
 app-forecast{
     display: block;
@@ -23,14 +23,15 @@ app-forecast{
 
 app-charts{
     display: block;
-    margin: 40px auto;
+    margin: 0 auto;
     max-width: 500px;
     width: 95%;
 }
 
+
 @media (min-width: 900px){
 
-    main{
+    .forecast-section{
         display: flex;
         justify-content: space-around;
     }
@@ -44,9 +45,9 @@ app-charts{
         width: 300px;
         height: 100vh;
     }
-main{
-    padding-top: 90px
-}
+    main{
+        padding-top: 80px
+    }
 
     main, app-search{
         width: calc(100vw - 300px);
@@ -54,7 +55,6 @@ main{
     }
     app-search{
         background: #0046d9;
-        border-bottom: white solid 1px;
         margin-top: 0;
         position: fixed;
         z-index: 99;
@@ -63,6 +63,7 @@ main{
     app-search-settings{
         margin-top: 0;
         background: rgb(0,0,0);
-background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,70,217,1) 100%, rgba(2,0,36,1) 100%);
+        background: linear-gradient(0deg, rgba(0,0,0,1) 0%, 
+                rgba(0,70,217,1) 100%, rgba(2,0,36,1) 100%);
     }
 }

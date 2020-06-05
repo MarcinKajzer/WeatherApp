@@ -19,6 +19,7 @@
 
 .temps{
     font-size: 22px;
+    animation: apire 1s;
 }
 
 .maxTemp{
@@ -48,6 +49,7 @@
 .description{
     font-size: 15px;
     color: #0A2C59;
+    animation: apire 1s;
 }
 
 ul{
@@ -63,6 +65,7 @@ li{
     position: relative;
     text-align: center;
     line-height: 20px;
+    transition: all 1s;
 }
 
 li::before{
@@ -70,16 +73,19 @@ li::before{
     justify-content: center;
     position: absolute;
     top: -25px;
-    height: 10px;
+    height: 100%;
     width: 100%;
     transform: scale(.8);
 }
 
 li:nth-child(1)::before{
     content: url(../../../assets/icons/cloudiness.svg);
+    
 }
 li:nth-child(2)::before{
     content: url(../../../assets/icons/wind.svg);
+    animation: rotation 1s;
+    transform: rotate(var(--direction));
 }
 li:nth-child(3)::before{
     content: url(../../../assets/icons/humidity.svg);
@@ -90,3 +96,23 @@ li:nth-child(4)::before{
 li:nth-child(5)::before{
     content: url(../../../assets/icons/rain.svg);
 }
+
+@keyframes rotation{
+    from{
+        transform: rotate(-180deg);
+    }
+    to{
+        transform: rotate(var(--direction));
+    }
+}
+
+@keyframes apire{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+

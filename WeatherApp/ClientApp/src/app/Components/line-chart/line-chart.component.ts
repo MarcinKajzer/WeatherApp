@@ -1,14 +1,16 @@
-import { Component, OnInit, ViewChild, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, OnChanges, OnDestroy } from '@angular/core';
 import { ChartDataSets, ChartOptions } from 'chart.js';
 import { Label, Color, BaseChartDirective } from 'ng2-charts';
 import * as pluginAnnotations from 'chartjs-plugin-annotation';
+import { DisplayService } from 'src/app/services/display.service';
+import { Subscriber, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-line-chart',
   templateUrl: './line-chart.component.html',
   styleUrls: ['./line-chart.component.css']
 })
-export class LineChartComponent implements OnChanges {
+export class LineChartComponent implements OnChanges, OnDestroy {
 
   @Input()
   data: {};
@@ -17,8 +19,10 @@ export class LineChartComponent implements OnChanges {
   @Input()
   optionalData: {};
 
-  public lineChartData: ChartDataSets[];
-  public lineChartLabels: Label[];
+  sub: Subscription;
+
+  public lineChartData: ChartDataSets[] = [];
+  public lineChartLabels: Label[] = [];
 
   public lineChartOptions: ChartOptions = {
     responsive: true,
@@ -58,7 +62,14 @@ export class LineChartComponent implements OnChanges {
 
   @ViewChild(BaseChartDirective, { static: true }) chart: BaseChartDirective;
 
-  constructor() { }
+  constructor(private displayService: DisplayService) {
+    this.sub = this.displayService.displayParamsObs.subscribe(result => {
+      if (this.lineChartData[1] !== undefined) {
+        this.chart.hideDataset(1, !result.feelsLikeTemp);
+      }
+    });
+  }
+
   ngOnChanges(): void {
     this.lineChartData = [];
     this.lineChartData.push(this.data);
@@ -72,13 +83,17 @@ export class LineChartComponent implements OnChanges {
 
   }
 
-  public hideOne() {
-    const isHidden = this.chart.isDatasetHidden(1);
-    this.chart.hideDataset(1, !isHidden);
+  public hideOne(nr: number) {
+    const isHidden = this.chart.isDatasetHidden(nr);
+    this.chart.hideDataset(nr, !isHidden);
   }
 
   public changeChartType(): void {
     this.lineChartType = this.lineChartType === 'bar' ? 'line' : 'bar';
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 
 }

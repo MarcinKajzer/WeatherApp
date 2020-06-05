@@ -1,18 +1,18 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { Forecast } from 'src/app/Models/Forecast';
 import { ForecastService } from 'src/app/services/forecast.service';
 import { DailyForecast } from 'src/app/Models/DailyForecast';
 import { ChartsService } from 'src/app/services/charts.service';
+import { PlaceInfo } from 'src/app/Models/PlaceInfo';
 
 @Component({
   selector: 'app-forecast',
   templateUrl: './forecast.component.html',
   styleUrls: ['./forecast.component.css']
 })
-export class ForecastComponent implements OnInit {
+export class ForecastComponent {
+
 
   forecast: DailyForecast;
-  currentDate = new Date();
 
   selectedDay = 0;
 
@@ -21,10 +21,8 @@ export class ForecastComponent implements OnInit {
     this.forecastService.getDailyForecast().subscribe(result => {
       this.forecast = result;
     });
-  }
 
 
-  ngOnInit(): void {
   }
 
   choseDay(nr: number) {

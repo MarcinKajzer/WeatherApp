@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import { ChartsModule } from 'ng2-charts';
-
+import { CssVarsModule } from 'ngx-css-variables';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +17,9 @@ import localePl from '@angular/common/locales/pl';
 import { CapitalizeFirstPipe } from './Shared/capitalize-first.pipe';
 import { ChartsComponent } from './Components/charts/charts.component';
 import { LineChartComponent } from './Components/line-chart/line-chart.component';
+import { WindChartComponent } from './Components/wind-chart/wind-chart.component';
+import { WindArrowComponent } from './Components/wind-arrow/wind-arrow.component';
+import { PlaceInfoComponent } from './Components/place-info/place-info.component';
 
 registerLocaleData(localePl);
 
@@ -30,7 +33,10 @@ registerLocaleData(localePl);
     DisplayDirective,
     CapitalizeFirstPipe,
     ChartsComponent,
-    LineChartComponent
+    LineChartComponent,
+    WindChartComponent,
+    WindArrowComponent,
+    PlaceInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -38,6 +44,7 @@ registerLocaleData(localePl);
     HttpClientModule,
     FormsModule,
     ChartsModule,
+    CssVarsModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-
 import { ChartsService } from 'src/app/services/charts.service';
-import { ExtractedWeatherProperties } from 'src/app/Models/ExtractedWeatherProperties';
 import { ChartDataSets } from 'chart.js';
 
 
@@ -15,8 +13,23 @@ export class ChartsComponent {
   xAxes: string[];
   chartData: ChartDataSets[];
 
+  windSpeed: number[];
+  windDirection: number[];
+  previousDirection: number[] = [0, 0, 0, 0, 0, 0, 0, 0];
+  hours: string[];
+
+
   constructor(private chartService: ChartsService) {
     this.chartService.extractedPropsObs.subscribe(result => {
+
+      this.windSpeed = result.windSpeed;
+      this.hours = result.hours;
+
+      if (this.windDirection !== undefined && this.windDirection.length !== 0) {
+        this.previousDirection = this.windDirection;
+      }
+
+      this.windDirection = result.windDirection;
 
       this.xAxes = result.hours;
 
@@ -26,7 +39,6 @@ export class ChartsComponent {
         { data: result.cloudinessLevel, label: 'Zachmurzenie %' },
         { data: result.humidity, label: 'Wilgotność %' },
         { data: result.pressure, label: 'Ciśnienie hPs' },
-       
       ];
     });
   }

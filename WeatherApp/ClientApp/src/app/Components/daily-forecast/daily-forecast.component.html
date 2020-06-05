@@ -14,8 +14,14 @@
     <div class="rightBar">
         <p class="description">{{forecast.weatherDescription | capitalizeFirst}}</p>
         <ul>
-            <li appDisplay param="cloudinessLevel">{{forecast.cloudinessLevel}}%</li>
-            <li appDisplay param="windSpeed">{{forecast.windSpeed * 3.6 | number: '1.0-0'}} km/h</li>
+            <ng-container *ngIf="forecast.cloudinessLevel != 0 ; else NonZero">
+                <li appDisplay param="cloudinessLevel">{{forecast.cloudinessLevel}}%</li>
+            </ng-container>
+            <ng-template #NonZero>
+                <li appDisplay param="cloudinessLevel">Brak</li>
+            </ng-template>
+            <li appDisplay param="windSpeed" [css-vars]="customCssVars">{{forecast.windSpeed * 3.6 | number: '1.0-0'}}
+                km/h</li>
             <li appDisplay param="humidity">{{forecast.humidity}}%</li>
             <li appDisplay param="pressure"> {{forecast.pressure}}</li>
             <ng-container *ngIf="forecast.rain != null ; else Rain">

@@ -6,6 +6,7 @@ import { DisplayParams } from '../Models/DisplayParams';
 import { DailyForecast } from '../Models/DailyForecast';
 import { ThreeHoursDetails } from '../Models/ThreeHoursDetails';
 import { ThreeHoursForecast } from '../Models/ThreeHoursForecast';
+import { PlaceInfo } from '../Models/PlaceInfo';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,7 @@ export class ForecastService {
 
   private dailyForecast = new Subject<DailyForecast>();
   private threeHoursForecast = new Subject<ThreeHoursForecast>();
+  private placeInfo = new Subject<PlaceInfo>();
 
   constructor(private httpClent: HttpClient) {
     this.setPlace('Gdańsk');
@@ -28,6 +30,7 @@ export class ForecastService {
     this.httpClent.get<Forecast>(this.url).subscribe(result => {
       this.dailyForecast.next(result.dailyForecast);
       this.threeHoursForecast.next(result.threeHoursForecast);
+      this.placeInfo.next(result.threeHoursForecast.placeInfo);
     });
   }
 
@@ -37,6 +40,10 @@ export class ForecastService {
 
   getThreeHoursForecast(): Observable<ThreeHoursForecast> {
     return this.threeHoursForecast.asObservable();
+  }
+
+  getPlaceInfo(): Observable<PlaceInfo>{
+    return this.placeInfo.asObservable();
   }
 
 }

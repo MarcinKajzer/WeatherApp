@@ -7,7 +7,7 @@ import { DisplayService } from 'src/app/services/display.service';
   templateUrl: './search-settings.component.html',
   styleUrls: ['./search-settings.component.css']
 })
-export class SearchSettingsComponent implements DoCheck, OnInit {
+export class SearchSettingsComponent implements  OnInit {
 
   isColapsed = true;
   displayParams = new DisplayParams();
@@ -19,8 +19,8 @@ export class SearchSettingsComponent implements DoCheck, OnInit {
     this.colapse();
   }
 
-  ngDoCheck(): void {
-    this.displayService.changeDisplay(this.displayParams);
+  changeDisplayParams(): void {
+     this.displayService.changeDisplay(this.displayParams);
   }
 
   @HostListener('window:resize', ['$event'])

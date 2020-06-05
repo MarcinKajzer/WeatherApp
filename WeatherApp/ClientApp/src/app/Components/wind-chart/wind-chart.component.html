@@ -1,0 +1,12 @@
+<div class="chart">
+    <div class="arrows">
+        <div *ngFor="let speed of windSpeed; let i = index" class="period">
+            <app-wind-arrow [speed]='speed' [previousDirection]="previousDirection[i]" [currentDirection]='windDirection[i]'></app-wind-arrow>
+        </div>
+    </div>
+   <ul>
+       <li *ngFor="let hour of hours">
+           {{hour}}
+       </li>
+   </ul>
+</div>

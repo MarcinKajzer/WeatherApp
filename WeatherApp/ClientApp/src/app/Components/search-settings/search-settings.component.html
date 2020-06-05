@@ -10,35 +10,31 @@
     <ul>
         <li>
             <label>Temperatura odczuwalna</label>
-            <input type="checkbox" [(ngModel)]="displayParams.feelsLikeTemp">
+            <input type="checkbox" [(ngModel)]="displayParams.feelsLikeTemp" (change)="changeDisplayParams()">
         </li>
         <li>
             <label>Ciśnienie</label>
-            <input type="checkbox" [(ngModel)]="displayParams.pressure">
+            <input type="checkbox" [(ngModel)]="displayParams.pressure" (change)="changeDisplayParams()">
         </li>
         <li>
             <label>Wilgotność</label>
-            <input type="checkbox" [(ngModel)]="displayParams.humidity">
+            <input type="checkbox" [(ngModel)]="displayParams.humidity" (change)="changeDisplayParams()">
         </li>
         <li>
-            <label>Prędkość wiatru</label>
-            <input type="checkbox" [(ngModel)]="displayParams.windSpeed">
-        </li>
-        <li>
-            <label>Kierunek wiatru</label>
-            <input type="checkbox" [(ngModel)]="displayParams.windDirection">
+            <label>Prędkość i kierunek wiatru</label>
+            <input type="checkbox" [(ngModel)]="displayParams.windSpeed" (change)="changeDisplayParams()">  
         </li>
         <li>
             <label>Zachmurzenie</label>
-            <input type="checkbox" [(ngModel)]="displayParams.cloudinessLevel">
+            <input type="checkbox" [(ngModel)]="displayParams.cloudinessLevel" (change)="changeDisplayParams()">
         </li>
         <li>
             <label>Deszcz</label>
-            <input type="checkbox" [(ngModel)]="displayParams.rain">
+            <input type="checkbox" [(ngModel)]="displayParams.rain" (change)="changeDisplayParams()">
         </li>
         <li>
             <label>Śnieg</label>
-            <input type="checkbox" [(ngModel)]="displayParams.snow">
+            <input type="checkbox" [(ngModel)]="displayParams.snow" (change)="changeDisplayParams()">
         </li>
     </ul>
 </ng-container>

@@ -5,3 +5,7 @@
     font-family: 'Roboto', sans-serif;
     font-family: 'Exo', sans-serif;
 }
+
+body{
+    overflow-x: hidden;
+}

@@ -16,7 +16,4 @@ export class DisplayService {
     this.displayParamsObs.next(displayParams);
   }
 
-
-
-
 }
