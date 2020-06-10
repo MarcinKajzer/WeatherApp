@@ -1,9 +1,8 @@
 ﻿using System.IO;
 using System.Reflection;
 using WeatherApp.DTOs;
-using WeatherApp.DTOs.Coordinates;
-using WeatherApp.DTOs.ForecastDTO_post;
-using WeatherApp.Services;
+using WeatherApp.DTOs.DTOs;
+using WeatherApp.Helpers;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -19,7 +18,7 @@ namespace WeatherApp.UnitTests
             _parser = new GeocodingDataParser();
         }
 
-        public Coordinates execute(string json)
+        public CoordinatesParsed execute(string json)
         {
             return _parser.ParseJsonToCoordinatesObject(json);
         }
@@ -39,25 +38,25 @@ namespace WeatherApp.UnitTests
         [Fact]
         public void parse_adress()
         {
-            Coordinates result = execute(ReadEmbededResourceFile("WeatherApp.UnitTests.TestData.coordinates.txt"));
+            CoordinatesParsed result = execute(ReadEmbededResourceFile("WeatherApp.UnitTests.TestData.coordinates.txt"));
 
-            Assert.Equal("Gdańsk, Polska", result.Results[0].FormattedAddress);
+            Assert.Equal("Gdańsk, Polska", result.Place);
         }
 
         [Fact]
         public void parse_latitude()
         {
-            Coordinates result = execute(ReadEmbededResourceFile("WeatherApp.UnitTests.TestData.coordinates.txt"));
+            CoordinatesParsed result = execute(ReadEmbededResourceFile("WeatherApp.UnitTests.TestData.coordinates.txt"));
 
-            Assert.Equal(54.35202520000001 , result.Results[0].Geometry.Location.Latitude);
+            Assert.Equal(54.35202520000001 , result.Latitude);
         }
 
         [Fact]
         public void parse_longitude()
         {
-            Coordinates result = execute(ReadEmbededResourceFile("WeatherApp.UnitTests.TestData.coordinates.txt"));
+            CoordinatesParsed result = execute(ReadEmbededResourceFile("WeatherApp.UnitTests.TestData.coordinates.txt"));
 
-            Assert.Equal(18.6466384, result.Results[0].Geometry.Location.Longitude);
+            Assert.Equal(18.6466384, result.Longitude);
         }
     }
 }

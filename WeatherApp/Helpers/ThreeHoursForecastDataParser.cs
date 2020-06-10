@@ -1,13 +1,10 @@
-﻿
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System.Collections.Generic;
-using WeatherApp.DTOs.DailyForecast;
-using WeatherApp.DTOs.DailyForecastParsed;
 using WeatherApp.DTOs.DTOs;
 using WeatherApp.DTOs.ThreeHoursForecast;
 using WeatherApp.DTOs.ThreeHoursForecastParsed;
 
-namespace WeatherApp.Services
+namespace WeatherApp.Helpers
 {
     public class ThreeHoursForecastDataParser
     {

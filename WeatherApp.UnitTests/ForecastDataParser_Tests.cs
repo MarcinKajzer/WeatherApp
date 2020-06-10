@@ -1,7 +1,7 @@
 using System.IO;
 using System.Reflection;
-using WeatherApp.DTOs.ForecastDTO_post;
-using WeatherApp.Services;
+using WeatherApp.DTOs.DTOs;
+using WeatherApp.Helpers;
 using Xunit;
 using Xunit.Abstractions;
 

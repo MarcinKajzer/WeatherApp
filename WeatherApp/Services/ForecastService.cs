@@ -3,6 +3,7 @@ using System;
 using System.Threading.Tasks;
 using WeatherApp.DTOs;
 using WeatherApp.DTOs.DTOs;
+using WeatherApp.Helpers;
 using WeatherApp.Services.Interfaces;
 
 namespace WeatherApp.Services

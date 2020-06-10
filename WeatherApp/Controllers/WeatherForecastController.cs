@@ -11,28 +11,28 @@ namespace WeatherApp.Controllers
     [Route("api/")]
     public class WeatherForecastController : ControllerBase
     {
-        private readonly IGeocodingService _geocodingClient;
-        private readonly IForecastService _forecastClient;
+        private readonly IGeocodingService _geocodingService;
+        private readonly IForecastService _forecastService;
 
         public WeatherForecastController(IGeocodingService geocodingClient, 
                                         IForecastService forecastClient)
         {
-            _geocodingClient = geocodingClient;
-            _forecastClient = forecastClient;
+            _geocodingService = geocodingClient;
+            _forecastService = forecastClient;
         }
 
         [Route("forecast")]
         [HttpGet]
         public async Task<ActionResult<Forecast>> GetByPlace([Required] string place)
         {
-            CoordinatesParsed coord = await _geocodingClient.GetCoordinates(place);
+            CoordinatesParsed coord = await _geocodingService.GetCoordinates(place);
            
             if (coord == null)
             {
                 return BadRequest();
             }
 
-            Forecast forecast = await _forecastClient.Get(coord);
+            Forecast forecast = await _forecastService.Get(coord);
 
             if (forecast == null)
             {

@@ -2,7 +2,7 @@
 using WeatherApp.DTOs;
 using WeatherApp.DTOs.DTOs;
 
-namespace WeatherApp.Services
+namespace WeatherApp.Helpers
 {
     public class GeocodingDataParser
     {

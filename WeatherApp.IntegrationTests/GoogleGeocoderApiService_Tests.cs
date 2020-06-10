@@ -1,14 +1,11 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Net.Http;
-using System.Runtime.InteropServices.ComTypes;
-using System.Text;
-using System.Threading.Tasks;
 using WeatherApp.Services;
 using Xunit;
 using Xunit.Abstractions;
+using HttpClient = System.Net.Http.HttpClient;
 
 namespace WeatherApp.IntegrationTests
 {

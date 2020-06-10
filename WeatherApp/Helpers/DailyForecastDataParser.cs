@@ -7,7 +7,7 @@ using WeatherApp.DTOs.DailyForecast;
 using WeatherApp.DTOs.DailyForecastParsed;
 using WeatherApp.DTOs.DTOs;
 
-namespace WeatherApp.Services
+namespace WeatherApp.Helpers
 {
     public class DailyForecastDataParser
     {
