@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using WeatherApp.Models;
+using WeatherApp.DTOs;
 
 namespace WeatherApp.Services.Interfaces
 {

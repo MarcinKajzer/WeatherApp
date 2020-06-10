@@ -2,8 +2,8 @@
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
-using WeatherApp.Models;
-using WeatherApp.Models.DTOs;
+using WeatherApp.DTOs;
+using WeatherApp.DTOs.DTOs;
 using WeatherApp.Services.Interfaces;
 
 namespace WeatherApp.Services

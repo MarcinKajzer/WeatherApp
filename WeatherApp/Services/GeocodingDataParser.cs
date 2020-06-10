@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
-using WeatherApp.Models;
-using WeatherApp.Models.DTOs;
+using WeatherApp.DTOs;
+using WeatherApp.DTOs.DTOs;
 
 namespace WeatherApp.Services
 {
@@ -12,9 +12,9 @@ namespace WeatherApp.Services
 
             return new CoordinatesParsed
             {
-                Latitude = coord.Results[0].Geometry.Location.Latitude,
-                Longitude = coord.Results[0].Geometry.Location.Longitude,
-                Place =coord.Results[0].FormattedAddress
+                Latitude = coord.Details[0].Geometry.Location.Latitude,
+                Longitude = coord.Details[0].Geometry.Location.Longitude,
+                Place =coord.Details[0].FormattedAddress
             };
         }
     }

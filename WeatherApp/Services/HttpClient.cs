@@ -11,7 +11,6 @@ namespace WeatherApp.Services
     public class HttpClient : IHttpClient
     {
         private readonly IHttpClientFactory _clientFactory;
-
         public HttpClient(IHttpClientFactory clientFactory)
         {
             _clientFactory = clientFactory;

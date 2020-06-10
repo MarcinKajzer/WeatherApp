@@ -1,6 +1,6 @@
 using System.IO;
 using System.Reflection;
-using WeatherApp.Models.ForecastDTO_post;
+using WeatherApp.DTOs.ForecastDTO_post;
 using WeatherApp.Services;
 using Xunit;
 using Xunit.Abstractions;
@@ -9,17 +9,17 @@ namespace WeatherApp.UnitTests
 {
     public class ForecastDataParser_Tests
     {
-        private ForecastDataParser _parser;
+        private ThreeHoursForecastDataParser _parser;
         private ITestOutputHelper _output { get; }
         public ForecastDataParser_Tests(ITestOutputHelper output)
         {
             _output = output;
-            _parser = new ForecastDataParser();
+            _parser = new ThreeHoursForecastDataParser();
         }
 
         ThreeHoursForecastParsed execute(string json)
         {
-            return _parser.ParseThreeHoursForecastData(json);
+            return _parser.Parse(json);
         }
 
         [Fact]

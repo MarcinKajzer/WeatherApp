@@ -1,32 +1,32 @@
 ﻿using Microsoft.Extensions.Configuration;
 using System;
-using System.Net.Http;
 using System.Threading.Tasks;
-using WeatherApp.Models;
-using WeatherApp.Models.Coordinates;
-using WeatherApp.Models.DTOs;
+using WeatherApp.DTOs;
+using WeatherApp.DTOs.DTOs;
 using WeatherApp.Services.Interfaces;
 
 namespace WeatherApp.Services
 {
     public class ForecastService : IForecastService
     {
-        private readonly IHttpClientFactory _clientFactory;
+        private readonly IHttpClient _httpClient;
         private readonly IConfiguration _config;
-        private ForecastDataParser _dataParser;
+        private ThreeHoursForecastDataParser _threeHoursParser;
+        private DailyForecastDataParser _dailyParser;
         private string _apiKey;
         
-        public ForecastService(IHttpClientFactory clientFactory, IConfiguration config)
+        public ForecastService(IHttpClient httpClient, IConfiguration config)
         {
-            _clientFactory = clientFactory;
+            _httpClient = httpClient;
             _config = config;
-            _dataParser = new ForecastDataParser();
+            _threeHoursParser = new ThreeHoursForecastDataParser();
+            _dailyParser = new DailyForecastDataParser();
             _apiKey = _config["OpenWeatherMap.ApiKey"];
         }
 
-        public async Task<ForecastDTO> GetForecast(CoordinatesParsed coord)
+        public async Task<Forecast> Get(CoordinatesParsed coord)
         {
-            return new ForecastDTO
+            return new Forecast
             {
                 DailyForecast = await GetDailyForecast(coord),
                 ThreeHoursForecast = await GetThreeHourForecast(coord)
@@ -39,9 +39,9 @@ namespace WeatherApp.Services
                                         $"lat={coord.Latitude}&lon={coord.Longitude}&" +
                                         $"appid={_apiKey}&lang=pl&units=metric");
 
-            string result = await HttpGet(url);
+            string result = await _httpClient.Get(url);
 
-            return _dataParser.ParseThreeHoursForecastData(result);
+            return _threeHoursParser.Parse(result);
         }
 
         private async Task<DailyForecastParsed> GetDailyForecast(CoordinatesParsed coord)
@@ -51,24 +51,9 @@ namespace WeatherApp.Services
                                         $"&appid={_apiKey}&units=metric&lang=pl" +
                                         $"&exclude=hourly,current,minutelly");
 
-            string result = await HttpGet(url);
+            string result = await _httpClient.Get(url);
 
-            return  _dataParser.ParseDailyForecastData(result);
-        }
-
-        private async Task<string> HttpGet(string url)
-        {
-            var request = new HttpRequestMessage(HttpMethod.Get, url);
-
-            var client = _clientFactory.CreateClient();
-
-            var response = await client.SendAsync(request);
-
-            if (response.IsSuccessStatusCode)
-                return response.Content.ReadAsStringAsync().Result;
-
-            else
-                return null;
+            return  _dailyParser.Parse(result);
         }
 
     }

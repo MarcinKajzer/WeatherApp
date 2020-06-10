@@ -1,8 +1,8 @@
 ﻿using System.IO;
 using System.Reflection;
-using WeatherApp.Models;
-using WeatherApp.Models.Coordinates;
-using WeatherApp.Models.ForecastDTO_post;
+using WeatherApp.DTOs;
+using WeatherApp.DTOs.Coordinates;
+using WeatherApp.DTOs.ForecastDTO_post;
 using WeatherApp.Services;
 using Xunit;
 using Xunit.Abstractions;

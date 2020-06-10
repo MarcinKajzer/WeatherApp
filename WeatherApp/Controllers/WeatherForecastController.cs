@@ -1,15 +1,14 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using WeatherApp.Models;
-using WeatherApp.Models.DTOs;
+using WeatherApp.DTOs;
+using WeatherApp.DTOs.DTOs;
 using WeatherApp.Services.Interfaces;
 
 namespace WeatherApp.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/")]
     public class WeatherForecastController : ControllerBase
     {
         private readonly IGeocodingService _geocodingClient;
@@ -22,9 +21,9 @@ namespace WeatherApp.Controllers
             _forecastClient = forecastClient;
         }
 
-        [Route("GetByPlace")]
+        [Route("forecast")]
         [HttpGet]
-        public async Task<ActionResult<ForecastDTO>> GetByPlace([Required] string place)
+        public async Task<ActionResult<Forecast>> GetByPlace([Required] string place)
         {
             CoordinatesParsed coord = await _geocodingClient.GetCoordinates(place);
            
@@ -33,7 +32,7 @@ namespace WeatherApp.Controllers
                 return BadRequest();
             }
 
-            ForecastDTO forecast = await _forecastClient.GetForecast(coord);
+            Forecast forecast = await _forecastClient.Get(coord);
 
             if (forecast == null)
             {

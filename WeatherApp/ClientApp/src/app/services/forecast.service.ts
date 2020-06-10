@@ -11,7 +11,7 @@ import { PlaceInfo } from '../Models/PlaceInfo';
 })
 export class ForecastService {
 
-  private baseUrl = 'https://localhost:44387/WeatherForecast/GetByPlace?place=';
+  private baseUrl = 'https://localhost:44387/api/forecast?place=';
 
   private dailyForecast = new Subject<DailyForecast>();
   private threeHoursForecast = new Subject<ThreeHoursForecast>();
