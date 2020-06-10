@@ -1,4 +1,4 @@
-import { Component, OnInit, DoCheck, KeyValueDiffers, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { DisplayParams } from 'src/app/Models/DisplayParams';
 import { DisplayService } from 'src/app/services/display.service';
 
@@ -20,7 +20,7 @@ export class SearchSettingsComponent implements  OnInit {
   }
 
   changeDisplayParams(): void {
-     this.displayService.changeDisplay(this.displayParams);
+     this.displayService.setParams(this.displayParams);
   }
 
   @HostListener('window:resize', ['$event'])

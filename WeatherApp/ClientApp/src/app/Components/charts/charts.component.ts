@@ -18,9 +18,8 @@ export class ChartsComponent {
   previousDirection: number[] = [0, 0, 0, 0, 0, 0, 0, 0];
   hours: string[];
 
-
   constructor(private chartService: ChartsService) {
-    this.chartService.extractedPropsObs.subscribe(result => {
+    this.chartService.getForecast().subscribe(result => {
 
       this.windSpeed = result.windSpeed;
       this.hours = result.hours;
@@ -42,6 +41,5 @@ export class ChartsComponent {
       ];
     });
   }
-
 }
 

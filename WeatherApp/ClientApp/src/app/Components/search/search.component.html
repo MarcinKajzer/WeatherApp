@@ -1,5 +1,5 @@
 <div class="searchGroup">
-    <input [(ngModel)] = 'place'>
+    <input [(ngModel)] = 'place'  (keydown.enter)="getForecast()" #search>
     <button (click)="getForecast()"></button>
 </div>
 

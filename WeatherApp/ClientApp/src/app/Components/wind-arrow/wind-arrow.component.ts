@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { CssVars } from 'ngx-css-variables';
 
 @Component({
@@ -8,7 +8,7 @@ import { CssVars } from 'ngx-css-variables';
 })
 export class WindArrowComponent implements OnChanges {
 
-  public customCssVars: CssVars;
+  customCssVars: CssVars;
 
   @Input()
   previousDirection: number;
@@ -17,16 +17,10 @@ export class WindArrowComponent implements OnChanges {
   @Input()
   currentDirection: number;
 
-  constructor() { }
-
   ngOnChanges() {
-
     this.customCssVars = {
       '--begin': this.previousDirection.toString() + 'deg',
       '--end': this.currentDirection.toString() + 'deg'
     };
-
   }
-
-
 }

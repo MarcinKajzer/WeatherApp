@@ -45,20 +45,6 @@ namespace WeatherApp.Controllers
             return forecast;
         }
 
-        //[HttpGet]
-        //public async Task<ActionResult<ForecastDTO>> GetByCoordinates([Required] double lat, [Required] double lng)
-        //{
-        //    ForecastDTO forecast = await _forecastClient.GetForecast( );
-
-        //    if (forecast == null)
-        //    {
-        //        return BadRequest();
-        //    }
-
-        //    forecast.ThreeHoursForecast.PlaceInfo.City = coord.Place;
-
-        //    return forecast;
-        //}
     }
 
 }

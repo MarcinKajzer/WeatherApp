@@ -5,7 +5,7 @@ import { ThreeHoursForecast } from '../Models/ThreeHoursForecast';
 import { ThreeHoursDetails } from '../Models/ThreeHoursDetails';
 import { ForecastService } from './forecast.service';
 import { ExtractedWeatherProperties } from '../Models/ExtractedWeatherProperties';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,61 +14,71 @@ export class ChartsService {
 
   private selectedDay = 0;
 
-  forecast: ThreeHoursForecast;
+  private forecast: ThreeHoursForecast;
+  private dailyForecast = new Array<ThreeHoursDetails[]>();
 
-  dailyForecast = new Array<ThreeHoursDetails[]>();
-
-  secondDayBeginingIndex: number;
-
-  private extractedProps = new ExtractedWeatherProperties();
-  extractedPropsObs = new BehaviorSubject<ExtractedWeatherProperties>(this.extractedProps);
+  private selectedDayForecast = new BehaviorSubject<ExtractedWeatherProperties>(new ExtractedWeatherProperties());
 
   constructor(private forecastService: ForecastService) {
     this.forecastService.getThreeHoursForecast().subscribe(result => {
       this.forecast = result;
-      this.splitData();
-      this.extractProperties(this.selectedDay);
+      this.splitDataIntoDays();
+      this.extractSelectedDayForecast();
     });
   }
 
-  selectDay(nr: number) {
+  selectDay(nr: number): void {
     this.selectedDay = nr;
-    this.extractProperties(this.selectedDay);
+    this.extractSelectedDayForecast();
   }
 
-  splitData() {
+  splitDataIntoDays(): void {
     this.dailyForecast.length = 0;
     this.dailyForecast.push(this.forecast.details.slice(0, 8));
 
+    let secondDayBeginingIndex;
+
     for (let i = 0; i < 8; i++) {
-      if (moment.unix(this.forecast.details[i].date).format('L') !== moment.unix(this.forecast.details[i + 1].date).format('L')) {
-        this.secondDayBeginingIndex = i + 1;
+      const currentPeriodDate = moment.unix(this.forecast.details[i].date).format('L');
+      const nextPeriodDate = moment.unix(this.forecast.details[i + 1].date).format('L');
+
+      if (currentPeriodDate !== nextPeriodDate) {
+        secondDayBeginingIndex = i + 1;
         break;
       }
     }
 
     for (let j = 0; j < 4; j++) {
-      this.dailyForecast.push(this.forecast.details.
-        slice(j * 8 + this.secondDayBeginingIndex, j * 8 + this.secondDayBeginingIndex + 8));
+      const beginingIndex = j * 8 + secondDayBeginingIndex;
+      const endingIndex = j * 8 + secondDayBeginingIndex + 8;
+
+      this.dailyForecast.push(this.forecast.details.slice(beginingIndex, endingIndex));
     }
   }
 
-  extractProperties(selectedDay: number): void {
+  extractSelectedDayForecast(): void {
 
-    this.extractedProps = new ExtractedWeatherProperties();
+    const extractedProps = new ExtractedWeatherProperties();
+
     for (let i = 0; i < 8; i++) {
 
-      this.extractedProps.hours.push(moment.unix(this.dailyForecast[selectedDay][i].date).format('LT'));
-      this.extractedProps.temperature.push(this.dailyForecast[selectedDay][i].temperature);
-      this.extractedProps.feelsLikeTemperature.push(this.dailyForecast[selectedDay][i].feelsLikeTemperature);
-      this.extractedProps.windSpeed.push(this.dailyForecast[selectedDay][i].windSpeed);
-      this.extractedProps.windDirection.push(this.dailyForecast[selectedDay][i].windDirection);
-      this.extractedProps.cloudinessLevel.push(this.dailyForecast[selectedDay][i].cloudinessLevel);
-      this.extractedProps.humidity.push(this.dailyForecast[selectedDay][i].humidity);
-      this.extractedProps.pressure.push(this.dailyForecast[selectedDay][i].pressure);
+      const singlePeriod = this.dailyForecast[this.selectedDay][i];
+
+      extractedProps.hours.push(moment.unix(singlePeriod.date).format('LT'));
+      extractedProps.temperature.push(singlePeriod.temperature);
+      extractedProps.feelsLikeTemperature.push(singlePeriod.feelsLikeTemperature);
+      extractedProps.windSpeed.push(singlePeriod.windSpeed);
+      extractedProps.windDirection.push(singlePeriod.windDirection);
+      extractedProps.cloudinessLevel.push(singlePeriod.cloudinessLevel);
+      extractedProps.humidity.push(singlePeriod.humidity);
+      extractedProps.pressure.push(singlePeriod.pressure);
     }
 
-    this.extractedPropsObs.next(this.extractedProps);
-
+    this.selectedDayForecast.next(extractedProps);
   }
+
+  getForecast(): Observable<ExtractedWeatherProperties> {
+    return this.selectedDayForecast.asObservable();
+  }
+
 }

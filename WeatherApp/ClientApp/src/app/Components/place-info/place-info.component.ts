@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 import { ForecastService } from 'src/app/services/forecast.service';
 import { PlaceInfo } from 'src/app/Models/PlaceInfo';
 
@@ -7,7 +7,7 @@ import { PlaceInfo } from 'src/app/Models/PlaceInfo';
   templateUrl: './place-info.component.html',
   styleUrls: ['./place-info.component.css']
 })
-export class PlaceInfoComponent implements OnInit {
+export class PlaceInfoComponent {
 
   placeInfo: PlaceInfo;
   currentDate = new Date();
@@ -18,8 +18,4 @@ export class PlaceInfoComponent implements OnInit {
       this.currentDate = new Date();
     });
   }
-
-  ngOnInit(): void {
-  }
-
 }

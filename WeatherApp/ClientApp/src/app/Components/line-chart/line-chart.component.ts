@@ -1,9 +1,9 @@
-import { Component, OnInit, ViewChild, Input, OnChanges, OnDestroy } from '@angular/core';
+import { Component, ViewChild, Input, OnChanges, OnDestroy } from '@angular/core';
 import { ChartDataSets, ChartOptions } from 'chart.js';
 import { Label, Color, BaseChartDirective } from 'ng2-charts';
 import * as pluginAnnotations from 'chartjs-plugin-annotation';
 import { DisplayService } from 'src/app/services/display.service';
-import { Subscriber, Subscription } from 'rxjs';
+import {  Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-line-chart',
@@ -63,7 +63,7 @@ export class LineChartComponent implements OnChanges, OnDestroy {
   @ViewChild(BaseChartDirective, { static: true }) chart: BaseChartDirective;
 
   constructor(private displayService: DisplayService) {
-    this.sub = this.displayService.displayParamsObs.subscribe(result => {
+    this.sub = this.displayService.getParams().subscribe(result => {
       if (this.lineChartData[1] !== undefined) {
         this.chart.hideDataset(1, !result.feelsLikeTemp);
       }
@@ -78,17 +78,10 @@ export class LineChartComponent implements OnChanges, OnDestroy {
       this.lineChartData.push(this.optionalData);
     }
 
-    this.lineChartLabels = [];
     this.lineChartLabels = this.xAxes;
-
   }
 
-  public hideOne(nr: number) {
-    const isHidden = this.chart.isDatasetHidden(nr);
-    this.chart.hideDataset(nr, !isHidden);
-  }
-
-  public changeChartType(): void {
+  changeChartType(): void {
     this.lineChartType = this.lineChartType === 'bar' ? 'line' : 'bar';
   }
 

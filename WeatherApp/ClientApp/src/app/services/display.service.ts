@@ -7,13 +7,13 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class DisplayService {
 
-  displayParamsObs = new BehaviorSubject<DisplayParams>(new DisplayParams());
+  private displayParams = new BehaviorSubject<DisplayParams>(new DisplayParams());
 
-  constructor() {
+  setParams(displayParams: DisplayParams) {
+    this.displayParams.next(displayParams);
   }
 
-  changeDisplay(displayParams: DisplayParams) {
-    this.displayParamsObs.next(displayParams);
+  getParams(){
+    return this.displayParams.asObservable();
   }
-
 }

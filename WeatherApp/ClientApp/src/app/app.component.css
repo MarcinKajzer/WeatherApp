@@ -59,11 +59,24 @@ app-charts{
         position: fixed;
         z-index: 99;
     }
-
     app-search-settings{
         margin-top: 0;
         background: rgb(0,0,0);
         background: linear-gradient(0deg, rgba(0,0,0,1) 0%, 
                 rgba(0,70,217,1) 100%, rgba(2,0,36,1) 100%);
+    }
+    
+}
+
+@media (min-width: 1700px){
+    app-charts{
+        display: grid;
+        grid-template-columns: 49% 49%;
+        max-width: none;
+        grid-gap: 20px;
+        width: 55%;
+    }
+    app-forecast{
+        width: 35%;
     }
 }

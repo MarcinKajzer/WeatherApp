@@ -1,7 +1,5 @@
 import { Directive, Input, ElementRef, Renderer2, OnInit, DoCheck, OnDestroy } from '@angular/core';
-import { ForecastService } from '../services/forecast.service';
-import { Subscriber, Subscription } from 'rxjs';
-import { DisplayParams } from '../Models/DisplayParams';
+import { Subscription } from 'rxjs';
 import { DisplayService } from '../services/display.service';
 
 @Directive({
@@ -10,14 +8,14 @@ import { DisplayService } from '../services/display.service';
 export class DisplayDirective implements DoCheck, OnDestroy, OnInit {
 
   @Input() param: string;
-  paramValue: boolean;
+  private paramValue: boolean;
 
-  subscription: Subscription;
+  private subscription: Subscription;
 
   constructor(private displayService: DisplayService, private el: ElementRef, private renderer: Renderer2) {}
 
   ngOnInit(){
-    this.subscription = this.displayService.displayParamsObs.subscribe(params => {
+    this.subscription = this.displayService.getParams().subscribe(params => {
       this.paramValue = params[this.param];
     });
   }

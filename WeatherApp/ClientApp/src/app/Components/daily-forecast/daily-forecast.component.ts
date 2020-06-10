@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { DailyDetails } from 'src/app/Models/DailyDetails';
 import { CssVars } from 'ngx-css-variables';
 
@@ -9,19 +9,15 @@ import { CssVars } from 'ngx-css-variables';
 })
 export class DailyForecastComponent implements OnChanges {
 
-  @Input()
-  forecast: DailyDetails;
+  @Input() forecast: DailyDetails;
 
   currentDate = new Date();
 
-  public customCssVars: CssVars;
-
-  constructor() { }
+  customCssVars: CssVars;
 
   ngOnChanges() {
     this.customCssVars = {
       '--direction': this.forecast.windDirection + 'deg'
     };
   }
-
 }

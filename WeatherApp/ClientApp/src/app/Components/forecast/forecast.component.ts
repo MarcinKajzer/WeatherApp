@@ -1,8 +1,7 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
 import { ForecastService } from 'src/app/services/forecast.service';
 import { DailyForecast } from 'src/app/Models/DailyForecast';
 import { ChartsService } from 'src/app/services/charts.service';
-import { PlaceInfo } from 'src/app/Models/PlaceInfo';
 
 @Component({
   selector: 'app-forecast',
@@ -10,7 +9,6 @@ import { PlaceInfo } from 'src/app/Models/PlaceInfo';
   styleUrls: ['./forecast.component.css']
 })
 export class ForecastComponent {
-
 
   forecast: DailyForecast;
 
@@ -21,13 +19,10 @@ export class ForecastComponent {
     this.forecastService.getDailyForecast().subscribe(result => {
       this.forecast = result;
     });
-
-
   }
 
   choseDay(nr: number) {
     this.selectedDay = nr;
     this.chartsService.selectDay(nr);
   }
-
 }

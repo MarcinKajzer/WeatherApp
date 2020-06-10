@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import * as moment from 'moment';
+import { Component } from '@angular/core';
 import 'moment/locale/pl';
 
 @Component({
@@ -7,11 +6,4 @@ import 'moment/locale/pl';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-
-  constructor() {
-  }
-
-}
-
-
+export class AppComponent {}

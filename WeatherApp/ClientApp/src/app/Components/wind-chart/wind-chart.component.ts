@@ -1,5 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
-import { CssVars } from 'ngx-css-variables';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-wind-chart',
@@ -16,7 +15,4 @@ export class WindChartComponent {
   previousDirection: number[];
   @Input()
   hours: string[];
-
-  constructor() { }
-
 }

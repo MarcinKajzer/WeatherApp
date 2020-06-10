@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import { ChartsModule } from 'ng2-charts';
 import { CssVarsModule } from 'ngx-css-variables';
+import { AgmCoreModule} from '@agm/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -44,7 +45,11 @@ registerLocaleData(localePl);
     HttpClientModule,
     FormsModule,
     ChartsModule,
-    CssVarsModule.forRoot()
+    CssVarsModule.forRoot(),
+    AgmCoreModule.forRoot({
+      apiKey : 'YOUR_GOOGLE_API_KEY',
+      libraries: ['places']
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
