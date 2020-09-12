@@ -47,7 +47,7 @@ registerLocaleData(localePl);
     ChartsModule,
     CssVarsModule.forRoot(),
     AgmCoreModule.forRoot({
-      apiKey : 'YOUR_GOOGLE_API_KEY',
+      apiKey : 'YOUR_KEY',
       libraries: ['places']
     })
   ],
