@@ -1,39 +1,49 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+using WeatherApp.DTOs;
+using WeatherApp.DTOs.DTOs;
+using WeatherApp.Services.Interfaces;
 
 namespace WeatherApp.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/")]
     public class WeatherForecastController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
+        private readonly IGeocodingService _geocodingService;
+        private readonly IForecastService _forecastService;
 
-        private readonly ILogger<WeatherForecastController> _logger;
-
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(IGeocodingService geocodingClient, 
+                                        IForecastService forecastClient)
         {
-            _logger = logger;
+            _geocodingService = geocodingClient;
+            _forecastService = forecastClient;
         }
 
+        [Route("forecast")]
         [HttpGet]
-        public IEnumerable<WeatherForecast> Get()
+        public async Task<ActionResult<Forecast>> GetByPlace([Required] string place)
         {
-            var rng = new Random();
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            CoordinatesParsed coord = await _geocodingService.GetCoordinates(place);
+           
+            if (coord == null)
             {
-                Date = DateTime.Now.AddDays(index),
-                TemperatureC = rng.Next(-20, 55),
-                Summary = Summaries[rng.Next(Summaries.Length)]
-            })
-            .ToArray();
+                return BadRequest();
+            }
+
+            Forecast forecast = await _forecastService.Get(coord);
+
+            if (forecast == null)
+            {
+                return BadRequest();
+            }
+            
+            forecast.ThreeHoursForecast.PlaceInfo.City = coord.Place;
+
+            return forecast;
         }
+
     }
+
 }

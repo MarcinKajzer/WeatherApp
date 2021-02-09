@@ -1,0 +1,6 @@
+<div *ngIf="placeInfo != null">
+    <p><span>Lokalizacja: </span> {{placeInfo.city}}</p>
+    <p class="date"><span>Data i godzina: </span>{{currentDate | date: 'EEEE dd. MMMM yyyy, HH:mm': '+0200' : 'pl' | capitalizeFirst}}</p>
+    <p><span>Wschód słońca: </span> {{placeInfo.sunrise * 1000 | date: 'HH:mm:ss':  '+0200' : 'pl'}} czasu polskiego</p>
+    <p><span>Zachód słońca: </span> {{placeInfo.sunset * 1000 | date: 'HH:mm:ss':  '+0200' : 'pl'}} czasu polskiego</p>
+</div>

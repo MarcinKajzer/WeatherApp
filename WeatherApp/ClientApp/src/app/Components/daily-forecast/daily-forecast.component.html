@@ -1,0 +1,35 @@
+<div class="forecastContainer">
+    <div class="leftBar">
+        <div class="temps">
+            <p class="maxTemp">{{forecast.temperatureMax | number: '1.0-0'}}°C</p>
+            <p class="minTemp">{{forecast.temperatureMin | number: '1.0-0'}}°C</p>
+        </div>
+        <ng-container *ngIf="(currentDate | date :'dd.MM') == (forecast.date*1000 | date :'dd.MM'); else NotCurrent">
+            <p class="date">Dziś</p>
+        </ng-container>
+        <ng-template #NotCurrent>
+            <p class="date">{{forecast.date*1000 | date :'EE dd.MM':'+0200':'pl' | titlecase}}</p>
+        </ng-template>
+    </div>
+    <div class="rightBar">
+        <p class="description">{{forecast.weatherDescription | capitalizeFirst}}</p>
+        <ul>
+            <ng-container *ngIf="forecast.cloudinessLevel != 0 ; else NonZero">
+                <li appDisplay param="cloudinessLevel">{{forecast.cloudinessLevel}}%</li>
+            </ng-container>
+            <ng-template #NonZero>
+                <li appDisplay param="cloudinessLevel">Brak</li>
+            </ng-template>
+            <li appDisplay param="windSpeed" [css-vars]="customCssVars">{{forecast.windSpeed * 3.6 | number: '1.0-0'}}
+                km/h</li>
+            <li appDisplay param="humidity">{{forecast.humidity}}%</li>
+            <li appDisplay param="pressure"> {{forecast.pressure}}</li>
+            <ng-container *ngIf="forecast.rain != null ; else Rain">
+                <li appDisplay param="rain">{{forecast.rain | number: '1.0-0' }} mm</li>
+            </ng-container>
+            <ng-template #Rain>
+                <li appDisplay param="rain">Brak</li>
+            </ng-template>
+        </ul>
+    </div>
+</div>

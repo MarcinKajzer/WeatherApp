@@ -1,0 +1,85 @@
+{
+  "results": [
+    {
+      "access_points": [
+        
+      ],
+      "address_components": [
+        {
+          "long_name": "Gdańsk",
+          "short_name": "Gdańsk",
+          "types": [
+            "locality",
+            "political"
+          ]
+        },
+        {
+          "long_name": "Gdańsk",
+          "short_name": "Gdańsk",
+          "types": [
+            "administrative_area_level_2",
+            "political"
+          ]
+        },
+        {
+          "long_name": "pomorskie",
+          "short_name": "pomorskie",
+          "types": [
+            "administrative_area_level_1",
+            "political"
+          ]
+        },
+        {
+          "long_name": "Polska",
+          "short_name": "PL",
+          "types": [
+            "country",
+            "political"
+          ]
+        },
+        {
+          "long_name": "80",
+          "short_name": "80",
+          "types": [
+            "postal_code",
+            "postal_code_prefix"
+          ]
+        }
+      ],
+      "formatted_address": "Gdańsk, Polska",
+      "geometry": {
+        "bounds": {
+          "northeast": {
+            "lat": 54.44721879999999,
+            "lng": 18.9512795
+          },
+          "southwest": {
+            "lat": 54.27495589999999,
+            "lng": 18.4287748
+          }
+        },
+        "location": {
+          "lat": 54.35202520000001,
+          "lng": 18.6466384
+        },
+        "location_type": "APPROXIMATE",
+        "viewport": {
+          "northeast": {
+            "lat": 54.44721879999999,
+            "lng": 18.9512795
+          },
+          "southwest": {
+            "lat": 54.27495589999999,
+            "lng": 18.4287748
+          }
+        }
+      },
+      "place_id": "ChIJb_rUFBxz_UYRjb63Y_H7uZs",
+      "types": [
+        "locality",
+        "political"
+      ]
+    }
+  ],
+  "status": "OK"
+}

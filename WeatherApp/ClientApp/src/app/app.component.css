@@ -1,0 +1,82 @@
+app-search-settings{
+    background: #0046d9;
+    width: 100%;
+    position: fixed;
+    z-index: 99;
+    margin-top: -90px;
+    color: white;
+}   
+
+app-search{
+    display: block;
+    height: 50px;
+    margin-top: 90px;
+}
+
+
+app-forecast{
+    display: block;
+    max-width: 500px;
+    width: 90%;
+    margin: 0 auto;
+}
+
+app-charts{
+    display: block;
+    margin: 0 auto;
+    max-width: 500px;
+    width: 95%;
+}
+
+
+@media (min-width: 900px){
+
+    .forecast-section{
+        display: flex;
+        justify-content: space-around;
+    }
+    app-forecast, app-charts{
+        width: 45%;
+    }
+
+}
+@media (min-width: 1200px){
+    app-search-settings{
+        width: 300px;
+        height: 100vh;
+    }
+    main{
+        padding-top: 80px
+    }
+
+    main, app-search{
+        width: calc(100vw - 300px);
+        margin-left: 300px;
+    }
+    app-search{
+        background: #0046d9;
+        margin-top: 0;
+        position: fixed;
+        z-index: 99;
+    }
+    app-search-settings{
+        margin-top: 0;
+        background: rgb(0,0,0);
+        background: linear-gradient(0deg, rgba(0,0,0,1) 0%, 
+                rgba(0,70,217,1) 100%, rgba(2,0,36,1) 100%);
+    }
+    
+}
+
+@media (min-width: 1700px){
+    app-charts{
+        display: grid;
+        grid-template-columns: 49% 49%;
+        max-width: none;
+        grid-gap: 20px;
+        width: 55%;
+    }
+    app-forecast{
+        width: 35%;
+    }
+}

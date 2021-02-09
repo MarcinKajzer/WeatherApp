@@ -1,0 +1,45 @@
+ul{
+    list-style-type: none;
+}
+
+.navBar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    padding: 20px;
+    border-bottom: solid 1px white;
+}
+
+.hamburgerIcon, .hamburgerIcon::before, .hamburgerIcon::after{
+    width: 50px;
+    height: 5px;
+    background-color: white;
+    position: relative;
+}
+
+.hamburgerIcon::before{
+    content: '';
+    top: -10px;
+    position: absolute;
+}
+
+.hamburgerIcon::after{
+    content: '';
+    bottom: -10px;
+    position: absolute;
+}
+
+li{
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin: 20px auto;
+    max-width: 300px;
+}
+
+@media (min-width: 1200px){
+    .navBar{
+        border: none;
+    }
+}

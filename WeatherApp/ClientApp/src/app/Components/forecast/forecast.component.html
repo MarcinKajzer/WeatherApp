@@ -1,0 +1,11 @@
+<app-place-info></app-place-info>
+
+<div *ngIf="forecast != null">
+
+    <ng-container *ngFor="let day of forecast.details.slice(0,5); let i = index">
+        
+        <app-daily-forecast [forecast] = "day" (click)=choseDay(i) [ngClass]="{'selected': selectedDay === i}"></app-daily-forecast>
+      
+    </ng-container>
+
+</div>

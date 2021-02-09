@@ -1,0 +1,39 @@
+<div class="navBar">
+    <p>SunnyDay</p>
+    <ng-container *ngIf="1200 > windowWidth">
+        <div (click)="isColapsed = !isColapsed" class="hamburgerIcon"></div>
+    </ng-container>
+</div>
+
+<ng-container *ngIf="!isColapsed">
+    <ul>
+        <li>
+            <label>Temperatura odczuwalna</label>
+            <input type="checkbox" [(ngModel)]="displayParams.feelsLikeTemp" (change)="changeDisplayParams()">
+        </li>
+        <li>
+            <label>Ciśnienie</label>
+            <input type="checkbox" [(ngModel)]="displayParams.pressure" (change)="changeDisplayParams()">
+        </li>
+        <li>
+            <label>Wilgotność</label>
+            <input type="checkbox" [(ngModel)]="displayParams.humidity" (change)="changeDisplayParams()">
+        </li>
+        <li>
+            <label>Prędkość i kierunek wiatru</label>
+            <input type="checkbox" [(ngModel)]="displayParams.windSpeed" (change)="changeDisplayParams()">  
+        </li>
+        <li>
+            <label>Zachmurzenie</label>
+            <input type="checkbox" [(ngModel)]="displayParams.cloudinessLevel" (change)="changeDisplayParams()">
+        </li>
+        <li>
+            <label>Deszcz</label>
+            <input type="checkbox" [(ngModel)]="displayParams.rain" (change)="changeDisplayParams()">
+        </li>
+        <li>
+            <label>Śnieg</label>
+            <input type="checkbox" [(ngModel)]="displayParams.snow" (change)="changeDisplayParams()">
+        </li>
+    </ul>
+</ng-container>

@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29926.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherApp", "WeatherApp\WeatherApp.csproj", "{5AA60E65-8686-4C69-AF96-99AA68604EE3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherApp", "WeatherApp\WeatherApp.csproj", "{5AA60E65-8686-4C69-AF96-99AA68604EE3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherApp.IntegrationTests", "WeatherApp.IntegrationTests\WeatherApp.IntegrationTests.csproj", "{C4737431-5BD1-4775-8367-875CCA33B385}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherApp.UnitTests", "WeatherApp.UnitTests\WeatherApp.UnitTests.csproj", "{7BBD44E4-0357-444B-94E8-C3177DEF5540}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherApp.DTOs", "WeatherApp.DTOs\WeatherApp.DTOs.csproj", "{60F41BDD-37A6-4BA5-B909-D7FB516693D2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{5AA60E65-8686-4C69-AF96-99AA68604EE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5AA60E65-8686-4C69-AF96-99AA68604EE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5AA60E65-8686-4C69-AF96-99AA68604EE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4737431-5BD1-4775-8367-875CCA33B385}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4737431-5BD1-4775-8367-875CCA33B385}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4737431-5BD1-4775-8367-875CCA33B385}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4737431-5BD1-4775-8367-875CCA33B385}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BBD44E4-0357-444B-94E8-C3177DEF5540}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BBD44E4-0357-444B-94E8-C3177DEF5540}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BBD44E4-0357-444B-94E8-C3177DEF5540}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BBD44E4-0357-444B-94E8-C3177DEF5540}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60F41BDD-37A6-4BA5-B909-D7FB516693D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60F41BDD-37A6-4BA5-B909-D7FB516693D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60F41BDD-37A6-4BA5-B909-D7FB516693D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60F41BDD-37A6-4BA5-B909-D7FB516693D2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
